@@ -1,12 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const GAME_POP_URL=`https://api.rawg.io/api/games?dates=${new Date().getFullYear()-1},${new Date().toISOString().slice(0,10)}&ordering=-rating&page_size=10`;
-// const GAME_UP_URL=`https://api.rawg.io/api/games?dates=${new Date()}`
-// const GAME_NEW_URL=`https://api.rawg.io/api/games`
-
-//짭
-// const GAME_URL="https://jsonplaceholder.typicode.com/users"
 
 const initialState={
     popular:[],
@@ -15,7 +9,6 @@ const initialState={
     loading:null,
     error:"",
 };
-
 
 export const fetchGames=createAsyncThunk(
     'games/fetchGames',
@@ -27,8 +20,6 @@ export const fetchGames=createAsyncThunk(
                 }
             });
             return resp.data.results;
-
-            // return resp.data;
         }catch(err){
             alert(err.message);
         }
@@ -49,6 +40,7 @@ const gameSlice=createSlice({
         .addCase(fetchGames.fulfilled, (state,action)=>{
             state.loading=false;
             state.popular=action.payload;
+            console.log(action.payload)
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.loading=false;
