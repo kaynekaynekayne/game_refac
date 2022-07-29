@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const GAME_URL=`https://api.rawg.io/api/games?key=${process.env.REACT_APP_KEY}&dates=${new Date().getFullYear()-1},${new Date().toISOString().slice(0,10)}&ordering=-rating&page_size=10`;
+// const GAME_URL=`https://api.rawg.io/api/games?dates=${new Date().getFullYear()-1},${new Date().toISOString().slice(0,10)}&ordering=-rating&page_size=10`;
+
 //짭
 const GAME_URL="https://jsonplaceholder.typicode.com/users"
 
@@ -18,7 +19,11 @@ export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
         try{
-            const resp=await axios.get(GAME_URL);
+            const resp=await axios.get(GAME_URL, {
+                // params:{
+                //     key:process.env.REACT_APP_KEY,
+                // }
+            });
             // return resp.data.results;
 
             //짭
