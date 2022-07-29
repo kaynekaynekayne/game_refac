@@ -11,7 +11,7 @@ function App() {
       <div>      
         <h2>{data.loading && <div>loading...</div>}</h2>
         <h2>{!data.loading && (
-          data.popular.map(pop=>(<div>{pop.name}</div>))
+          data.popular.map(pop=>(<div key={pop.id}>{pop.name}</div>))
         )}</h2>
       </div>
   );
