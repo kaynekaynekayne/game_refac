@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
-import Game from './game';
+import Game from '../components/game';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
     const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
     
+    console.log(popular, upComing, newGames)
     useEffect(()=>{
         dispatch(fetchGames())
     },[dispatch]);
@@ -27,7 +28,6 @@ const Home = (props) => {
                             key={item.id}
                         />
                     )} 
-
                     <h2>Upcoming games</h2>
                     {upComing.map(item=>
                         <Game 

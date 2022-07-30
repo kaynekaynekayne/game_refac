@@ -42,11 +42,11 @@ const gameSlice=createSlice({
             state.loading=true;
         })
         .addCase(fetchGames.fulfilled, (state,action)=>{
-            state.loading=false;
             const {popular, upComing, newGames}=action.payload;
             state.popular=popular;
             state.upComing=upComing;
             state.newGames=newGames;
+            state.loading=false;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.loading=false;
