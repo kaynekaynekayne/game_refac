@@ -12,18 +12,18 @@ const initialState={
 
 export const fetchGames=createAsyncThunk(
     'games/fetchGames',
-    async(urlName)=>{ //url을 받아올 것임 (pop, upcome, new 각각 다른 값을 리턴함)
+    async()=>{
         try{
-            const resp=await axios.get(urlName, {
-                params:{
-                    key:process.env.REACT_APP_KEY,
-                }
-            });
-            console.log(urlName, resp)
+            const popGames=await axios.get(GAME_POP_URL);
+            const upGames=await axios.get(GAME_UP_URL);
+            const latestGames=await axios.get(GAME_NEW_URL);
+            
             return {
-                results:resp.data.results,
-                urlName,
+                popular:popGames.data.results,
+                upComing:upGames.data.results,
+                newGames:latestGames.data.results,
             };
+
         }catch(err){
             return err;
         }
@@ -43,15 +43,10 @@ const gameSlice=createSlice({
         })
         .addCase(fetchGames.fulfilled, (state,action)=>{
             state.loading=false;
-            const {results,urlName}=action.payload;
-            switch (urlName){
-                case GAME_POP_URL:
-                    state.popular=results;
-                case GAME_NEW_URL:
-                    state.newGames=results;
-                case GAME_UP_URL:
-                    state.upComing=results;
-            }
+            const {popular, upComing, newGames}=action.payload;
+            state.popular=popular;
+            state.upComing=upComing;
+            state.newGames=newGames;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.loading=false;

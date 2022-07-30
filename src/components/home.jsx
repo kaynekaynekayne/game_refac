@@ -1,18 +1,15 @@
-import React from 'react';
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
-import { GAME_POP_URL, GAME_UP_URL, GAME_NEW_URL } from '../api';
 import Game from './game';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
     const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
+    
     useEffect(()=>{
-        dispatch(fetchGames(GAME_POP_URL))
-        dispatch(fetchGames(GAME_NEW_URL))
-        dispatch(fetchGames(GAME_UP_URL))
+        dispatch(fetchGames())
     },[dispatch]);
 
 
