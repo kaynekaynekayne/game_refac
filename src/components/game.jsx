@@ -5,11 +5,11 @@ import { fetchDetail } from '../features/detailSlice';
 const Game = ({name, released, id, image}) => {
     
     const dispatch=useDispatch();
-    const data=useSelector(state=>state.detail.game)
+    const data=useSelector(state=>state.detail.detailInfo)
+    console.log(data);
 
     const getDetailHandler=()=>{
         dispatch(fetchDetail(id))
-        console.log(data);
     }
 
 

@@ -1,15 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { DETAIL_URL } from "../api";
+import { DETAIL_URL, SCREENSHOT_URL} from "../api";
 
-const initialState={game:{}};
+const initialState={
+    detailInfo:{},
+    screenShots:{},
+};
 
 export const fetchDetail=createAsyncThunk(
     "detail/fetchDetail",
     async (id)=>{
         try{
-            const resp=await axios.get(DETAIL_URL(id))
-            return resp.data;
+            const detail=await axios.get(DETAIL_URL(id))
+            const screenShot=await axios.get(SCREENSHOT_URL(id))
+            return {
+                details:detail.data,
+                screens:screenShot.data,
+            }
         }catch(err){
             return err;
         }
@@ -22,7 +29,9 @@ const detailSlice=createSlice({
     extraReducers:(builder)=>{
         builder.
         addCase(fetchDetail.fulfilled, (state,action)=>{
-            state.game=action.payload
+            const {screens, details}=action.payload;
+            state.detailInfo=details;
+            state.screenShots=screens;
         })
     }
 })
