@@ -2,58 +2,78 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
 import Game from '../components/game';
+import styled from 'styled-components';
+import {motion} from 'framer-motion';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
+    const {upComing, loading}=useSelector(state=>state.games);
+    // const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
     
-    console.log(popular, upComing, newGames)
     useEffect(()=>{
         dispatch(fetchGames())
     },[dispatch]);
 
 
     return(
-        <div>
+        <Section>
             {loading ? <div>loading...</div> : (
-                <div>
-                    <h2>Popular games</h2>
-                    {popular.map(item=>
-                        <Game 
-                            name={item.name}
-                            released={item.released}
-                            id={item.id} 
-                            image={item.background_image}
-                            key={item.id}
-                        />
-                    )} 
+                <>
                     <h2>Upcoming games</h2>
-                    {upComing.map(item=>
-                        <Game 
-                            name={item.name}
-                            released={item.released}
-                            id={item.id} 
-                            image={item.background_image}
-                            key={item.id}
-                        />
-                    )} 
-
+                    <Games>
+                        {upComing.map(item=>
+                            <Game 
+                                name={item.name}
+                                released={item.released}
+                                id={item.id} 
+                                image={item.background_image}
+                                key={item.id}
+                            />
+                        )} 
+                    </Games>
+                    {/* <h2>Popular games</h2>
+                    <Games>
+                        {popular.map(item=>
+                            <Game 
+                                name={item.name}
+                                released={item.released}
+                                id={item.id} 
+                                image={item.background_image}
+                                key={item.id}
+                            />
+                        )} 
+                    </Games>
                     <h2>Latest games</h2>
-                    {newGames.map(item=>
-                        <Game 
-                            name={item.name}
-                            released={item.released}
-                            id={item.id} 
-                            image={item.background_image}
-                            key={item.id}
-                        />
-                    )} 
-                    
-                </div>
+                    <Games>
+                        {newGames.map(item=>
+                            <Game 
+                                name={item.name}
+                                released={item.released}
+                                id={item.id} 
+                                image={item.background_image}
+                                key={item.id}
+                            />
+                        )} 
+                    </Games> */}
+                </>
             )}
-        </div>
+        </Section>
     )
 };
 
+const Section=styled(motion.div)`
+    padding:1.3rem;
+    overflow-x:hidden;
+    h2{
+        padding:1rem 0;
+    }
+`;
+
+const Games=styled(motion.div)`
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    grid-column-gap:1.3rem;
+    grid-row-gap:4rem;
+`
 export default Home;

@@ -14,14 +14,14 @@ export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
         try{
-            const popGames=await axios.get(GAME_POP_URL);
             const upGames=await axios.get(GAME_UP_URL);
-            const latestGames=await axios.get(GAME_NEW_URL);
+            // const popGames=await axios.get(GAME_POP_URL);
+            // const latestGames=await axios.get(GAME_NEW_URL);
             
             return {
-                popular:popGames.data.results,
                 upComing:upGames.data.results,
-                newGames:latestGames.data.results,
+                // popular:popGames.data.results,
+                // newGames:latestGames.data.results,
             };
 
         }catch(err){
