@@ -9,13 +9,16 @@ const Detail = (props) => {
     const {detailInfo, screenShots}=useSelector(state=>state.detail)
     
     const navigate=useNavigate();
-    const backHomeHandler=()=>{
-        document.body.style.overflow="auto";
-        navigate("/");
+    const backHomeHandler=(event)=>{
+        const {target}=event;
+        if(target.classList.contains('external')){
+            document.body.style.overflow="auto";
+            navigate("/");
+        }
     }
 
     return(
-        <External onClick={backHomeHandler}>
+        <External onClick={backHomeHandler} className="external">
             <Board>
                 <div>
                     <h1>{detailInfo.name}</h1>

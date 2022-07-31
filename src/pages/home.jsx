@@ -23,7 +23,7 @@ const Home = (props) => {
             {loading ? <LoadingSection><div></div></LoadingSection> : (
                 <>
                 {id && <Detail />} 
-                    <h2>Upcoming games</h2>
+                    <h2>Upcoming</h2>
                     <Games>
                         {upComing.map(item=>
                             <Game 
@@ -35,7 +35,7 @@ const Home = (props) => {
                             />
                         )} 
                     </Games>
-                    <h2>Popular games</h2>
+                    <h2>Popular</h2>
                     {/* <Games>
                         {popular.map(item=>
                             <Game 
@@ -47,7 +47,7 @@ const Home = (props) => {
                             />
                         )} 
                     </Games>
-                    <h2>Latest games</h2>
+                    <h2>Latest</h2>
                     <Games>
                         {newGames.map(item=>
                             <Game 
@@ -91,8 +91,8 @@ const LoadingSection=styled.div`
         width:5rem;
         height:5rem;
         border-radius:50%;
-        border:10px solid rgb(50, 185, 135);
-        border-top:10px solid whitesmoke;
+        border:0.5rem solid rgb(50, 185, 135);
+        border-top:0.5rem solid whitesmoke;
         animation:spin 2s linear infinite;
     }
 

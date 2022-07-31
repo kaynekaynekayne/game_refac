@@ -27,8 +27,12 @@ const detailSlice=createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
-        builder.
-        addCase(fetchDetail.fulfilled, (state,action)=>{
+        builder
+        .addCase(fetchDetail.pending, (state,action)=>{
+            state.detailInfo={};
+            state.screenShots={};
+        })
+        .addCase(fetchDetail.fulfilled, (state,action)=>{
             const {screens, details}=action.payload;
             state.detailInfo=details;
             state.screenShots=screens;
