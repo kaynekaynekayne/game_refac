@@ -3,11 +3,12 @@ import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
+import Load from './load';
 
 const Detail = (props) => {
     
-    const {detailInfo, screenShots}=useSelector(state=>state.detail)
-    
+    const {detailInfo, screenShots, loading}=useSelector(state=>state.detail)
+
     const navigate=useNavigate();
     const backHomeHandler=(event)=>{
         const {target}=event;
@@ -20,33 +21,35 @@ const Detail = (props) => {
     return(
         <External onClick={backHomeHandler} className="external">
             <Board>
-                <div>
-                    <h1>{detailInfo.name}</h1>
-                    <section className="main">
-                        <img src={detailInfo.background_image} alt="image"/>
-                        <h3>{detailInfo.description_raw}</h3>
-                        <h4>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h4>
-                    </section>
-                    <section className='rating'>
-                        {detailInfo.ratings && detailInfo.ratings.map(mark=>
-                            <h5 key={mark.id}>{mark.title} - {mark.percent}%</h5>
-                        )}
-                        {detailInfo.metacritic && 
-                            <h5>`Metacritic: ${detailInfo.metacritic}`</h5>
-                        }
-                    </section>
-                    <section className="platforms">
-                        <h4>You can enjoy this game in</h4>
-                        {detailInfo.platforms && detailInfo.platforms.map(data=>(
-                            <h4 key={data.platform.id}>{data.platform.name}</h4>
-                        ))}
-                    </section>
-                    <section className='playshots'>
-                        {screenShots.results && screenShots.results.map(shot=>
-                            <img src={shot.image} key={shot.id} alt="game"/>    
-                        )}
-                    </section>
-                </div>
+                {loading ? <Load /> : (
+                    <div>
+                        <h1>{detailInfo.name}</h1>
+                        <section className="main">
+                            <img src={detailInfo.background_image} alt="image"/>
+                            <h3>{detailInfo.description_raw}</h3>
+                            <h4>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h4>
+                        </section>
+                        <section className='rating'>
+                            {detailInfo.ratings && detailInfo.ratings.map(mark=>
+                                <h5 key={mark.id}>{mark.title} - {mark.percent}%</h5>
+                            )}
+                            {detailInfo.metacritic && 
+                                <h5>`Metacritic: ${detailInfo.metacritic}`</h5>
+                            }
+                        </section>
+                        <section className="platforms">
+                            <h4>You can enjoy this game in</h4>
+                            {detailInfo.platforms && detailInfo.platforms.map(data=>(
+                                <h4 key={data.platform.id}>{data.platform.name}</h4>
+                            ))}
+                        </section>
+                        <section className='playshots'>
+                            {screenShots.results && screenShots.results.map(shot=>
+                                <img src={shot.image} key={shot.id} alt="game"/>    
+                            )}
+                        </section>
+                    </div>
+                )}
             </Board>
         </External>
     )

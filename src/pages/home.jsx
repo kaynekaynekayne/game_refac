@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
 import Game from '../components/game';
 import Detail from "../components/detail";
+import Load from "../components/load";
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {useParams} from 'react-router-dom';
@@ -20,7 +21,7 @@ const Home = (props) => {
 
     return(
         <Section>
-            {loading ? <LoadingSection><div></div></LoadingSection> : (
+            {loading ? <Load /> : (
                 <>
                 {id && <Detail />} 
                     <h2>Upcoming</h2>
@@ -80,29 +81,4 @@ const Games=styled(motion.div)`
     grid-row-gap:4rem;
 `
 
-const LoadingSection=styled.div`
-    width:100%;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    div{
-        width:5rem;
-        height:5rem;
-        border-radius:50%;
-        border:0.5rem solid rgb(50, 185, 135);
-        border-top:0.5rem solid whitesmoke;
-        animation:spin 2s linear infinite;
-    }
-
-    @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform:rotate(360deg);
-    }
-}
-`;
 export default Home;
