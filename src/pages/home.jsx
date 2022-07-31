@@ -19,7 +19,7 @@ const Home = (props) => {
 
     return(
         <Section>
-            {loading ? <LoadingSection></LoadingSection> : (
+            {loading ? <LoadingSection><div></div></LoadingSection> : (
                 <>
                 {/* <Detail />  */}
                     <h2>Upcoming games</h2>
@@ -80,12 +80,20 @@ const Games=styled(motion.div)`
 `
 
 const LoadingSection=styled.div`
-    width:1.5rem;
-    height:1.5rem;
-    border-radius:50%;
-    border:3px solid lightblue;
-    border-top:3px solid rgb(221, 213, 238);
-    animation:spin 2s linear infinite;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    div{
+        width:5rem;
+        height:5rem;
+        border-radius:50%;
+        border:10px solid rgb(50, 185, 135);
+        border-top:10px solid whitesmoke;
+        animation:spin 2s linear infinite;
+    }
 
     @keyframes spin {
     0% {
