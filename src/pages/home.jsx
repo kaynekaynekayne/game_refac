@@ -18,7 +18,6 @@ const Home = (props) => {
         dispatch(fetchGames())
     },[dispatch]);
 
-
     return(
         <Section>
             {loading ? <LoadingSection><div></div></LoadingSection> : (
