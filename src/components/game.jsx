@@ -7,8 +7,6 @@ import {motion} from 'framer-motion';
 const Game = ({name, released, id, image}) => {
     
     const dispatch=useDispatch();
-    const data=useSelector(state=>state.detail.detailInfo)
-    console.log(data);
 
     const getDetailHandler=()=>{
         dispatch(fetchDetail(id))
@@ -18,8 +16,10 @@ const Game = ({name, released, id, image}) => {
     return(
         <EachGame onClick={getDetailHandler}>
             <img src={image} alt={name}/>
-            <h2>{name}</h2>
-            <p>{released}</p>
+            <div>
+                <h3>{name}</h3>
+                <p>{released}</p>
+            </div>
         </EachGame>
     )
 };
@@ -27,7 +27,12 @@ const Game = ({name, released, id, image}) => {
 const EachGame=styled(motion.div)`
     box-shadow:0px 5px 20px rgba(0,0,0,0.1);
     text-align:center;
-    border-radius:0.5rem;
+    border-radius:0.5rem;    
+    overflow:hidden;
+    cursor:pointer;
+    div{
+        padding:2rem 0;
+    }
     img{
         width:100%;
         height:65vh;
@@ -39,8 +44,7 @@ const EachGame=styled(motion.div)`
     img:hover{
         opacity:0.6;
     }
-    overflow:hidden;
-    cursor:pointer;
+
 `;
 
 export default Game;
