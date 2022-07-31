@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetail } from '../features/detailSlice';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import {Link} from 'react-router-dom';
 
 const Game = ({name, released, id, image}) => {
     
@@ -15,11 +16,13 @@ const Game = ({name, released, id, image}) => {
 
     return(
         <EachGame onClick={getDetailHandler}>
-            <img src={image} alt={name}/>
-            <div>
-                <h3>{name}</h3>
-                <p>{released}</p>
-            </div>
+            <Link to={`/game/${id}`}>
+                <img src={image} alt={name}/>
+                <div>
+                    <h3>{name}</h3>
+                    <p>{released}</p>
+                </div>
+            </Link>
         </EachGame>
     )
 };

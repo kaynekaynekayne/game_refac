@@ -19,9 +19,9 @@ const Home = (props) => {
 
     return(
         <Section>
-            {loading ? <div>loading...</div> : (
+            {loading ? <LoadingSection></LoadingSection> : (
                 <>
-                <Detail /> 
+                {/* <Detail />  */}
                     <h2>Upcoming games</h2>
                     <Games>
                         {upComing.map(item=>
@@ -78,4 +78,22 @@ const Games=styled(motion.div)`
     grid-column-gap:1.3rem;
     grid-row-gap:4rem;
 `
+
+const LoadingSection=styled.div`
+    width:1.5rem;
+    height:1.5rem;
+    border-radius:50%;
+    border:3px solid lightblue;
+    border-top:3px solid rgb(221, 213, 238);
+    animation:spin 2s linear infinite;
+
+    @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+`;
 export default Home;

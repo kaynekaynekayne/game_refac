@@ -2,14 +2,19 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import {useNavigate} from 'react-router-dom';
 
 const Detail = (props) => {
     
     const {detailInfo, screenShots}=useSelector(state=>state.detail)
-    console.log(detailInfo, screenShots);
+    
+    const navigate=useNavigate();
+    const backHomeHandler=()=>{
+        navigate("/");
+    }
 
     return(
-        <External>
+        <External onClick={backHomeHandler}>
             <Board>
                 <div>
                     <h1>{detailInfo.name}</h1>
