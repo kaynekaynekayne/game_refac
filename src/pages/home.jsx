@@ -5,13 +5,15 @@ import Game from '../components/game';
 import Detail from "../components/detail";
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
+import {useParams} from 'react-router-dom';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    // const {upComing, loading}=useSelector(state=>state.games);
     const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
     
+    const {id}=useParams();
+
     useEffect(()=>{
         dispatch(fetchGames())
     },[dispatch]);
@@ -21,7 +23,7 @@ const Home = (props) => {
         <Section>
             {loading ? <LoadingSection><div></div></LoadingSection> : (
                 <>
-                {/* <Detail />  */}
+                {id && <Detail />} 
                     <h2>Upcoming games</h2>
                     <Games>
                         {upComing.map(item=>
@@ -68,7 +70,7 @@ const Section=styled(motion.div)`
     padding:1.3rem ;
     overflow-x:hidden;
     h2{
-        padding:4rem 0;
+        padding:2.5rem 0;
     }
 `;
 

@@ -16,10 +16,10 @@ body{
 }
 
 ::-webkit-scrollbar{
-    width:0.4rem;
+    width:0.2rem;
 }
 ::-webkit-scrollbar-thumb{
-    background-color:rgb(50, 185, 135);
+    background-color:rgb(126, 237, 196);
 }
 ::-webkit-scrollbar-track {
     background-color: #3c3c3c;

@@ -10,7 +10,8 @@ const Game = ({name, released, id, image}) => {
     const dispatch=useDispatch();
 
     const getDetailHandler=()=>{
-        dispatch(fetchDetail(id))
+        document.body.style.overflow="hidden";
+        dispatch(fetchDetail(id));
     }
 
 
@@ -42,10 +43,10 @@ const EachGame=styled(motion.div)`
         // height:100%; 
         // 모바일용 height!!!
         object-fit:cover;
-        transition: all 0.2s ease-out
+        transition: all 0.2s ease-in
     }
     img:hover{
-        opacity:0.6;
+        // opacity:0.6;
     }
 
 `;

@@ -10,6 +10,7 @@ const Detail = (props) => {
     
     const navigate=useNavigate();
     const backHomeHandler=()=>{
+        document.body.style.overflow="auto";
         navigate("/");
     }
 
