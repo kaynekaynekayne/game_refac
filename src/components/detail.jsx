@@ -5,6 +5,7 @@ import {motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
 import Load from './load';
 import { resize } from '../utils/resize';
+import RatingStars from './ratingStars';
 
 import playstation from '../assets/img/playstation.svg';
 import steam from '../assets/img/steam.svg';
@@ -49,8 +50,9 @@ const Detail = (props) => {
                         <h1>{detailInfo.name}</h1>
                         <section className="main">
                             <img src={resize(detailInfo.background_image,1280)} alt="image"/>
-                            <h3>{detailInfo.description_raw}</h3>
-                            <h4>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h4>
+                            <h3>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h3>
+                            <RatingStars />
+                            <h4>{detailInfo.description_raw}</h4>
                         </section>
                         <section className='rating'>
                             {detailInfo.ratings && detailInfo.ratings.map(mark=>
@@ -111,7 +113,7 @@ const External=styled(motion.div)`
         padding:1.5rem;
     }
 
-    h3{
+    h4{
         text-align:left;
     }
 
