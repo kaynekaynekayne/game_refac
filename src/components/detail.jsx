@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
 import Load from './load';
+import { resize } from '../utils/resize';
 
 const Detail = (props) => {
     
@@ -25,7 +26,7 @@ const Detail = (props) => {
                     <div>
                         <h1>{detailInfo.name}</h1>
                         <section className="main">
-                            <img src={detailInfo.background_image} alt="image"/>
+                            <img src={resize(detailInfo.background_image,1280)} alt="image"/>
                             <h3>{detailInfo.description_raw}</h3>
                             <h4>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h4>
                         </section>
@@ -45,7 +46,7 @@ const Detail = (props) => {
                         </section>
                         <section className='playshots'>
                             {screenShots.results && screenShots.results.map(shot=>
-                                <img src={shot.image} key={shot.id} alt="game"/>    
+                                <img src={resize(shot.image,1280)} key={shot.id} alt="game"/>    
                             )}
                         </section>
                     </div>

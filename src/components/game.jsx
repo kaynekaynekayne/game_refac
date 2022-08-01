@@ -4,6 +4,7 @@ import { fetchDetail } from '../features/detailSlice';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
+import { resize } from '../utils/resize';
 
 const Game = ({name, released, id, image}) => {
     
@@ -18,7 +19,7 @@ const Game = ({name, released, id, image}) => {
     return(
         <EachGame onClick={getDetailHandler}>
             <Link to={`/game/${id}`}>
-                <img src={image} alt={name}/>
+                <img src={resize(image, 1280)} alt={name}/>
                 <div>
                     <h3>{name}</h3>
                     <p>{released}</p>

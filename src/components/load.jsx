@@ -19,8 +19,8 @@ const LoadingSection=styled.div`
         width:5rem;
         height:5rem;
         border-radius:50%;
-        border:0.5rem solid rgb(50, 185, 135);
-        border-top:0.5rem solid whitesmoke;
+        border:0.4rem solid rgb(50, 185, 135);
+        border-top:0.4rem solid whitesmoke;
         animation:spin 2s linear infinite;
     }
 

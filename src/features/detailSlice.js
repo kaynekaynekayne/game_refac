@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { DETAIL_URL, SCREENSHOT_URL} from "../api";
+import { DETAIL_URL, SCREENSHOT_URL} from "../utils/api";
 
 const initialState={
     detailInfo:{},

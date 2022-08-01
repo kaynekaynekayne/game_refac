@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GAME_POP_URL, GAME_NEW_URL, GAME_UP_URL } from "../api";
+import { GAME_POP_URL, GAME_NEW_URL, GAME_UP_URL } from "../utils/api";
 
 const initialState={
     popular:[],
