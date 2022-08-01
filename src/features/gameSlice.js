@@ -14,9 +14,9 @@ export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
         try{
-            const upGames=await axios.get(GAME_UP_URL);
-            // const popGames=await axios.get(GAME_POP_URL);
-            // const latestGames=await axios.get(GAME_NEW_URL);
+            const upGames=await axios.get(GAME_UP_URL());
+            // const popGames=await axios.get(GAME_POP_URL());
+            // const latestGames=await axios.get(GAME_NEW_URL());
             
             return {
                 upComing:upGames.data.results,

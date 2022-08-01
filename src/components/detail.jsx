@@ -26,7 +26,7 @@ const Detail = (props) => {
         }
     };
 
-    const getPlatform=(platform)=>{
+    const showPlatform=(platform)=>{
         return(
             {
                 "PlayStation 4":playstation,
@@ -63,8 +63,8 @@ const Detail = (props) => {
                         <section className="platforms">
                             <h4>You can enjoy this game in</h4>
                             {detailInfo.platforms && detailInfo.platforms.map(item=>(
-                                <div key={item.platform.id}>
-                                    <img src={getPlatform(item.platform.name)}></img>
+                                <div key={item.platform.id} style={{width:'2rem'}}>
+                                    <img src={showPlatform(item.platform.name)}></img>
                                     <h5>{item.platform.name}</h5>
                                 </div>
                             ))}
