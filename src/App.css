@@ -15,14 +15,14 @@ body{
 }
 
 .app{
-    padding:1rem;
+    padding:2rem;
 }
 
 ::-webkit-scrollbar{
     width:0.2rem;
 }
 ::-webkit-scrollbar-thumb{
-    background-color:rgb(126, 237, 196);
+    background-color:rgb(152, 207, 187);
 }
 ::-webkit-scrollbar-track {
     background-color: #3c3c3c;

@@ -20,7 +20,7 @@ const Home = (props) => {
     },[dispatch]);
 
     return(
-        <Section>
+        <HomeSection>
             {loading ? <Load /> : (
                 <>
                 {id && <Detail />} 
@@ -62,14 +62,15 @@ const Home = (props) => {
                     </Games> */}
                 </>
             )}
-        </Section>
+        </HomeSection>
     )
 };
 
-const Section=styled(motion.div)`
+const HomeSection=styled(motion.div)`
     overflow-x:hidden;
+    // padding:3rem;
     h2{
-        padding:2.5rem 0;
+        padding:2rem 0;
     }
 `;
 

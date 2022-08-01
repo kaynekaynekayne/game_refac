@@ -14,9 +14,9 @@ const SearchHeader = (props) => {
 
     return(
         <HeaderSection>
-            <h1>
-                <i className="fas fa-gamepad"></i>
-            </h1>
+            <h3>
+                <i className="fa-solid fa-arrows-rotate"></i>
+            </h3>
             <form onSubmit={submitHandler}>
                 <input 
                     type="text"
@@ -34,7 +34,11 @@ const HeaderSection=styled.header`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:1rem;
+    // padding:1rem;
+    h3{
+        color:rgb(106, 237, 196);
+        cursor:pointer;
+    }
     input{
         color:black;
         padding:1rem;
