@@ -44,10 +44,10 @@ const EachGame=styled(motion.div)`
         // height:100%; 
         // 모바일용 height!!!
         object-fit:cover;
-        transition: all 0.2s ease-in
+        // transition: all 0.2s ease-in
     }
     img:hover{
-        // opacity:0.6;
+        // opacity:0.5;
     }
 
 `;

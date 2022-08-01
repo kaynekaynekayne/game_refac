@@ -6,6 +6,13 @@ import {useNavigate} from 'react-router-dom';
 import Load from './load';
 import { resize } from '../utils/resize';
 
+import playstation from '../assets/img/playstation.svg';
+import steam from '../assets/img/steam.svg';
+import xbox from '../assets/img/xbox.svg';
+import nintendo from '../assets/img/nintendo.svg';
+import apple from '../assets/img/apple.svg';
+import gamepad from '../assets/img/gamepad.svg';
+
 const Detail = (props) => {
     
     const {detailInfo, screenShots, loading}=useSelector(state=>state.detail)
@@ -17,7 +24,22 @@ const Detail = (props) => {
             document.body.style.overflow="auto";
             navigate("/");
         }
-    }
+    };
+
+    const getPlatform=(platform)=>{
+        return(
+            {
+                "PlayStation 4":playstation,
+                "PlayStation 5":playstation,
+                "Xbox Series S/X":xbox,
+                "Xbox S":xbox,
+                "Xbox One":xbox,
+                "Nintendo Switch":nintendo,
+                "PC":steam,
+                "iOS":apple,
+            }[platform]||gamepad
+        )
+    };
 
     return(
         <External onClick={backHomeHandler} className="external">
@@ -40,13 +62,19 @@ const Detail = (props) => {
                         </section>
                         <section className="platforms">
                             <h4>You can enjoy this game in</h4>
-                            {detailInfo.platforms && detailInfo.platforms.map(data=>(
-                                <h4 key={data.platform.id}>{data.platform.name}</h4>
+                            {detailInfo.platforms && detailInfo.platforms.map(item=>(
+                                <div key={item.platform.id}>
+                                    <img src={getPlatform(item.platform.name)}></img>
+                                    <h5>{item.platform.name}</h5>
+                                </div>
                             ))}
                         </section>
                         <section className='playshots'>
                             {screenShots.results && screenShots.results.map(shot=>
-                                <img src={resize(shot.image,1280)} key={shot.id} alt="game"/>    
+                                <div key={shot.id}>
+                                    <img src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
+                                    {/* <button>full</button>    */}
+                                </div>
                             )}
                         </section>
                     </div>
@@ -66,6 +94,7 @@ const External=styled(motion.div)`
     position:fixed;
     top:0;
     left:0;
+
     // &::-webkit-scrollbar{
     //     width:0.5rem;
     // }

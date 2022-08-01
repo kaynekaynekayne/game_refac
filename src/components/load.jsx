@@ -16,8 +16,8 @@ const LoadingSection=styled.div`
     align-items:center;
 
     div{
-        width:5rem;
-        height:5rem;
+        width:4rem;
+        height:4rem;
         border-radius:50%;
         border:0.4rem solid rgb(50, 185, 135);
         border-top:0.4rem solid whitesmoke;
