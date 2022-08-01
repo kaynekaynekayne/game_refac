@@ -50,8 +50,10 @@ const Detail = (props) => {
                         <h1>{detailInfo.name}</h1>
                         <section className="main">
                             <img src={resize(detailInfo.background_image,1280)} alt="image"/>
-                            <h3>{`Rating: ${detailInfo.rating}/${detailInfo.rating_top}`}</h3>
-                            <RatingStars />
+                            <div style={{padding:'1.5rem'}}>
+                                <RatingStars />
+                                <span>{`(${detailInfo.rating}/${detailInfo.rating_top})`}</span>
+                            </div>
                             <h4>{detailInfo.description_raw}</h4>
                         </section>
                         <section className='rating'>
@@ -97,24 +99,16 @@ const External=styled(motion.div)`
     top:0;
     left:0;
 
-    // &::-webkit-scrollbar{
-    //     width:0.5rem;
-    // }
-    // &::-webkit-scrollbar-thumb{
-    //     background-color:pink;
-    // }
-    // &::-webkit-scrollbar-track{
-    //     background:white;
-    // }
     &::-webkit-scrollbar{
         display:none;
     }
-    h1,h3,h4{
+    h1,h3{
         padding:1.5rem;
     }
 
     h4{
         text-align:left;
+        padding:0 1.5rem;
     }
 
 `;
@@ -130,6 +124,9 @@ const Board=styled(motion.div)`
     img{
         width:100%;
         display:block;
+    }
+    span{
+        font-weight:bolder;
     }
 `
 export default Detail;

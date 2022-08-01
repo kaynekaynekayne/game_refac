@@ -67,7 +67,6 @@ const Home = (props) => {
 };
 
 const Section=styled(motion.div)`
-    padding:1.3rem ;
     overflow-x:hidden;
     h2{
         padding:2.5rem 0;

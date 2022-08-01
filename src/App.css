@@ -12,7 +12,10 @@ body{
     background: rgb(27, 27, 27);
     color:white;
     font-family: 'Raleway', sans-serif;
-    
+}
+
+.app{
+    padding:1rem;
 }
 
 ::-webkit-scrollbar{

@@ -7,17 +7,15 @@ const RatingStars = (props) => {
     const {detailInfo}=useSelector(state=>state.detail);
 
     return(
-        <div>
             <StarRatings 
                 rating={detailInfo.rating}
                 numberOfStars={5}
-                starRatedColor="rgb(52,52,52)"
+                starDimension="1.2rem"
+                starRatedColor="rgb(62,62,62)"
                 starEmptyColor="lightgrey"
-                starSpacing="0.3rem"
+                starSpacing="0.5px"
                 name="rating"
             />
-        </div>
-
     )
 };
 
