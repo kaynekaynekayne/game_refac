@@ -18,3 +18,12 @@ function App() {
 }
 
 export default App;
+
+
+asset->detail
+// import playstation from '../assets/img/playstation.svg';
+// import steam from '../assets/img/steam.svg';
+// import xbox from '../assets/img/xbox.svg';
+// import nintendo from '../assets/img/nintendo.svg';
+// import apple from '../assets/img/apple.svg';
+// import gamepad from '../assets/img/gamepad.svg';

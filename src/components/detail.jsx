@@ -6,13 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import Load from './load';
 import { resize } from '../utils/resize';
 import RatingStars from './ratingStars';
-
-import playstation from '../assets/img/playstation.svg';
-import steam from '../assets/img/steam.svg';
-import xbox from '../assets/img/xbox.svg';
-import nintendo from '../assets/img/nintendo.svg';
-import apple from '../assets/img/apple.svg';
-import gamepad from '../assets/img/gamepad.svg';
+import {FaPlaystation, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay} from 'react-icons/fa';
 
 const Detail = (props) => {
     
@@ -30,15 +24,15 @@ const Detail = (props) => {
     const showPlatform=(platform)=>{
         return(
             {
-                "PlayStation 4":playstation,
-                "PlayStation 5":playstation,
-                "Xbox Series S/X":xbox,
-                "Xbox S":xbox,
-                "Xbox One":xbox,
-                "Nintendo Switch":nintendo,
-                "PC":steam,
-                "iOS":apple,
-            }[platform]||gamepad
+                "PlayStation 4":<FaPlaystation></FaPlaystation>,
+                "PlayStation 5":<FaPlaystation></FaPlaystation>,
+                "Xbox Series S/X":<FaXbox></FaXbox>,
+                "Xbox S":<FaXbox></FaXbox>,
+                "Xbox One":<FaXbox></FaXbox>,
+                "Nintendo Switch":<FaGamepad></FaGamepad>,
+                "PC":<FaSteam></FaSteam>,
+                "iOS":<FaApple></FaApple>,
+            }[platform]||<FaPlay></FaPlay>
         )
     };
 
@@ -67,9 +61,10 @@ const Detail = (props) => {
                         <section className="platforms">
                             <h4>You can enjoy this game in</h4>
                             {detailInfo.platforms && detailInfo.platforms.map(item=>(
-                                <div key={item.platform.id} style={{width:'2rem'}}>
-                                    <img src={showPlatform(item.platform.name)}></img>
-                                    <h5>{item.platform.name}</h5>
+                                <div key={item.platform.id}>
+                                    <span>{showPlatform(item.platform.name)}</span>
+                                    {/* <img src={showPlatform(item.platform.name)}></img> */}
+                                    <span>{item.platform.name}</span>
                                 </div>
                             ))}
                         </section>
