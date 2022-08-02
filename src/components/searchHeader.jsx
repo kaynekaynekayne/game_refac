@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
-
+import {FaGamepad} from 'react-icons/fa';
 const SearchHeader = (props) => {
     
     const [text, setText]=useState("");
@@ -14,9 +14,9 @@ const SearchHeader = (props) => {
 
     return(
         <HeaderSection>
-            <h3>
-                <i className="fa-solid fa-arrows-rotate"></i>
-            </h3>
+            <h1>
+                <FaGamepad></FaGamepad>
+            </h1>
             <form onSubmit={submitHandler}>
                 <input 
                     type="text"
@@ -34,20 +34,23 @@ const HeaderSection=styled.header`
     display:flex;
     justify-content:space-between;
     align-items:center;
-    // padding:1rem;
-    h3{
+    padding:2rem;
+
+    h1{
         color:rgb(106, 237, 196);
         cursor:pointer;
+        font-weight:bolder;
     }
+
     input{
         color:black;
-        padding:1rem;
+        padding:1.2rem 1rem;
         border-radius:0.5rem;
         outline:0;
         border:none;
         opacity:0.9;
     }
-`;
+    `;
 
 
 export default SearchHeader;
