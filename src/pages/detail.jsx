@@ -3,9 +3,9 @@ import {useSelector} from 'react-redux';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
-import Load from './load';
+import Load from '../components/load';
 import { resize } from '../utils/resize';
-import RatingStars from './ratingStars';
+import RatingStars from '../components/ratingStars';
 import {FaPlaystation, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay} from 'react-icons/fa';
 
 const Detail = (props) => {

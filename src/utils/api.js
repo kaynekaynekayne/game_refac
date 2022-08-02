@@ -12,3 +12,5 @@ export const GAME_NEW_URL=()=>`${BASE_URL}?key=${process.env.REACT_APP_KEY}${new
 
 export const DETAIL_URL=(gameId)=>(`${BASE_URL}/${gameId}.json?&key=${process.env.REACT_APP_KEY}`);
 export const SCREENSHOT_URL=(gameId)=>(`${BASE_URL}/${gameId}/screenshots?&key=${process.env.REACT_APP_KEY}`);
+
+export const SEARCH_URL=(game_name)=>`${BASE_URL}?key=${process.env.REACT_APP_KEY}&search=${game_name}&page_size=9`

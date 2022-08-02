@@ -1,15 +1,24 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
 import {FaGamepad} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import searchSlice,{fetchSearch} from '../features/searchSlice';
+
 const SearchHeader = (props) => {
     
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
+
     const [text, setText]=useState("");
     const inputHandler=(e)=>{
         setText(e.target.value);
     }
-
+    
     const submitHandler=(e)=>{
         e.preventDefault();
+        dispatch(fetchSearch(text));
+        // navigate(`/searched/${text}`);
     }
 
     return(

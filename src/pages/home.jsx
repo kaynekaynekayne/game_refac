@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
 import Game from '../components/game';
-import Detail from "../components/detail";
+import Detail from "./detail";
 import Load from "../components/load";
 import styled from 'styled-components';
 import {motion} from 'framer-motion';

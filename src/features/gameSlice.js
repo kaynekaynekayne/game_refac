@@ -10,6 +10,7 @@ const initialState={
     error:"",
 };
 
+
 export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
