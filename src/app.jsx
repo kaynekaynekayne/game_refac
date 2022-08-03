@@ -3,6 +3,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import Pages from './pages/pages';
 import './App.css';
 import SearchHeader from "./components/searchHeader";
+import Category from "./components/category";
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
       <div className="app">      
         <Router>
           <SearchHeader/>
+          <Category />
           <Pages />
         </Router>
       </div>
