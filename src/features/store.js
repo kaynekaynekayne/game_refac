@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gameSlice from "./features/gameSlice";
-import detailSlice from "./features/detailSlice";
-import searchSlice from "./features/searchSlice";
+import gameSlice from "./gameSlice";
+import detailSlice from "./detailSlice";
+import searchSlice from "./searchSlice";
 
 const store=configureStore({
     reducer:{

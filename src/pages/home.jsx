@@ -6,62 +6,54 @@ import Detail from "./detail";
 import Load from "../components/load";
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-import {useParams} from 'react-router-dom';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
+    const {popular, upComing, newGames}=useSelector(state=>state.games);
     
-    const {id}=useParams();
-
     useEffect(()=>{
         dispatch(fetchGames())
     },[dispatch]);
 
     return(
         <HomeSection>
-            {loading ? <Load /> : (
-                <>
-                {id && <Detail />} 
-                    <h2>Upcoming</h2>
-                    <Games>
-                        {upComing.map(item=>
-                            <Game 
-                                name={item.name}
-                                released={item.released}
-                                id={item.id} 
-                                image={item.background_image}
-                                key={item.id}
-                            />
-                        )} 
-                    </Games>
-                    <h2>Popular</h2>
-                    {/* <Games>
-                        {popular.map(item=>
-                            <Game 
-                                name={item.name}
-                                released={item.released}
-                                id={item.id} 
-                                image={item.background_image}
-                                key={item.id}
-                            />
-                        )} 
-                    </Games>
-                    <h2>Latest</h2>
-                    <Games>
-                        {newGames.map(item=>
-                            <Game 
-                                name={item.name}
-                                released={item.released}
-                                id={item.id} 
-                                image={item.background_image}
-                                key={item.id}
-                            />
-                        )} 
-                    </Games> */}
-                </>
-            )}
+            <h2>Upcoming</h2>
+            <Games>
+                {upComing.map(item=>
+                    <Game 
+                        name={item.name}
+                        released={item.released}
+                        id={item.id} 
+                        image={item.background_image}
+                        key={item.id}
+                    />
+                )} 
+            </Games>
+            <h2>Popular</h2>
+            {/* <Games>
+                {popular.map(item=>
+                    <Game 
+                        name={item.name}
+                        released={item.released}
+                        id={item.id} 
+                        image={item.background_image}
+                        key={item.id}
+                    />
+                )} 
+            </Games>
+            <h2>Latest</h2>
+            <Games>
+                {newGames.map(item=>
+                    <Game 
+                        name={item.name}
+                        released={item.released}
+                        id={item.id} 
+                        image={item.background_image}
+                        key={item.id}
+                    />
+                )} 
+            </Games> */}
         </HomeSection>
     )
 };

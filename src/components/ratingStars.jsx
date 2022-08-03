@@ -9,7 +9,7 @@ const RatingStars = (props) => {
     return(
             <StarRatings 
                 rating={detailInfo.rating}
-                numberOfStars={5}
+                numberOfStars={detailInfo.rating_top}
                 starDimension="1.2rem"
                 starRatedColor="rgb(62,62,62)"
                 starEmptyColor="lightgrey"

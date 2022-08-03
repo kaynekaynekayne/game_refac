@@ -6,7 +6,6 @@ const initialState={
     popular:[],
     newGames:[],
     upComing:[],
-    loading:null,
     error:"",
 };
 
@@ -39,18 +38,13 @@ const gameSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder
-        .addCase(fetchGames.pending, (state,action)=>{
-            state.loading=true;
-        })
         .addCase(fetchGames.fulfilled, (state,action)=>{
             const {popular, upComing, newGames}=action.payload;
             state.popular=popular;
             state.upComing=upComing;
             state.newGames=newGames;
-            state.loading=false;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
-            state.loading=false;
             state.error=action.error.message
         })
     }

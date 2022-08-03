@@ -1,24 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDetail } from '../features/detailSlice';
+import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
 import { resize } from '../utils/resize';
 
 const Game = ({name, released, id, image}) => {
-    
-    const dispatch=useDispatch();
-
-    const getDetailHandler=()=>{
-        document.body.style.overflow="hidden";
-        dispatch(fetchDetail(id));
-    }
-
 
     return(
-        <EachGame onClick={getDetailHandler}>
-            <Link to={`/game/${id}`}>
+        <EachGame>
+            <Link to={`/detail/${id}`}>
                 <img src={resize(image, 1280)} alt={name}/>
                 <div>
                     <h3>{name}</h3>

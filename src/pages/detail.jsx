@@ -1,23 +1,33 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useEffect } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
-import {useNavigate} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import Load from '../components/load';
 import { resize } from '../utils/resize';
 import RatingStars from '../components/ratingStars';
+import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
 import {FaPlaystation, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay} from 'react-icons/fa';
 
 const Detail = (props) => {
-    
-    const {detailInfo, screenShots, loading}=useSelector(state=>state.detail)
+    const {id}=useParams();
+    const dispatch=useDispatch();
 
-    const navigate=useNavigate();
-    const backHomeHandler=(event)=>{
+    const data=useSelector(state=>state.detail);
+    const {detailInfo, screenShots}=data;
+
+    useEffect(()=>{
+        dispatch(fetchDetail(id));
+        return ()=>{
+            dispatch(removeGamesDetail());
+        }
+    },[dispatch, id]);
+
+    const goBackHandler=(event)=>{
         const {target}=event;
         if(target.classList.contains('external')){
-            document.body.style.overflow="auto";
-            navigate("/");
+            // document.body.style.overflow="auto";
+            window.history.back();
         }
     };
 
@@ -37,9 +47,9 @@ const Detail = (props) => {
     };
 
     return(
-        <External onClick={backHomeHandler} className="external">
+        <External className="external" onClick={goBackHandler}>
             <Board>
-                {loading ? <Load /> : (
+                {Object.keys(detailInfo).length===0 ? <Load /> : (
                     <div>
                         <h1>{detailInfo.name}</h1>
                         <section className="main">
@@ -54,9 +64,7 @@ const Detail = (props) => {
                             {detailInfo.ratings && detailInfo.ratings.map(mark=>
                                 <h5 key={mark.id}>{mark.title} - {mark.percent}%</h5>
                             )}
-                            {detailInfo.metacritic && 
                                 <h5>`Metacritic: ${detailInfo.metacritic}`</h5>
-                            }
                         </section>
                         <section className="platforms">
                             <h4>You can enjoy this game in</h4>

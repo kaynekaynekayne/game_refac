@@ -5,8 +5,6 @@ import { DETAIL_URL, SCREENSHOT_URL} from "../utils/api";
 const initialState={
     detailInfo:{},
     screenShots:{},
-    loading:null,
-    error:""
 };
 
 export const fetchDetail=createAsyncThunk(
@@ -27,23 +25,21 @@ export const fetchDetail=createAsyncThunk(
 const detailSlice=createSlice({
     name:"detail",
     initialState,
-    reducers:{},
+    reducers:{
+        removeGamesDetail:(state)=>{
+            state.detailInfo={};
+            state.screenShots={};
+        }
+    },
     extraReducers:(builder)=>{
         builder
-        .addCase(fetchDetail.pending, (state,action)=>{
-            state.loading=true;
-        })
         .addCase(fetchDetail.fulfilled, (state,action)=>{
             const {screens, details}=action.payload;
             state.detailInfo=details;
             state.screenShots=screens;
-            state.loading=false;
-        })
-        .addCase(fetchDetail.rejected, (state,action)=>{
-            state.loading=false;
-            state.error=action.error.message;
         })
     }
 })
 
+export const {removeGamesDetail}=detailSlice.actions;
 export default detailSlice;

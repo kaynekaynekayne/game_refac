@@ -4,6 +4,7 @@ import { SEARCH_URL } from "../utils/api";
 
 const initialState={
     searching:[],
+    error:"",
 }
 
 export const fetchSearch=createAsyncThunk(
@@ -12,7 +13,7 @@ export const fetchSearch=createAsyncThunk(
         try{
             const searchGames=await axios.get(SEARCH_URL(gameName));
             return{
-                searchedGames:searchGames.data,
+                searchedGames:searchGames.data.results,
             };
 
         }catch(err){
