@@ -3,8 +3,8 @@ import axios from 'axios';
 import { DETAIL_URL, SCREENSHOT_URL} from "../utils/api";
 
 const initialState={
-    detailInfo:{},
-    screenShots:{},
+    detailInfo:[],
+    screenShots:[],
     loading:null,
 };
 
@@ -28,8 +28,8 @@ const detailSlice=createSlice({
     initialState,
     reducers:{
         removeGamesDetail:(state)=>{
-            state.detailInfo={};
-            state.screenShots={};
+            state.detailInfo=[];
+            state.screenShots=[];
         }
     },
     extraReducers:(builder)=>{
