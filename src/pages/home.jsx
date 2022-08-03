@@ -10,7 +10,7 @@ import {motion} from 'framer-motion';
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, newGames}=useSelector(state=>state.games);
+    const {popular, upComing, newGames, loading}=useSelector(state=>state.games);
     
     useEffect(()=>{
         dispatch(fetchGames())

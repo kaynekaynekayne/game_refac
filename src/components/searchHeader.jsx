@@ -18,7 +18,7 @@ const SearchHeader = (props) => {
     const submitHandler=(e)=>{
         e.preventDefault();
         dispatch(fetchSearch(text));
-        navigate(`/searched/${text}`);
+        navigate(`/searched/${text}`);//
         setText("");
     }
 
