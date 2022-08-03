@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
 import {Link} from 'react-router-dom';
 import { resize } from '../utils/resize';
 
@@ -19,7 +18,7 @@ const Game = ({name, released, id, image}) => {
     )
 };
 
-const EachGame=styled(motion.div)`
+const EachGame=styled.div`
     box-shadow:0px 5px 20px rgba(0,0,0,0.3);
     text-align:center;
     border-radius:0.5rem;    

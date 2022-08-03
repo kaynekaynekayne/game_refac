@@ -2,10 +2,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from '../features/gameSlice';
 import Game from '../components/game';
-import Detail from "./detail";
-import Load from "../components/load";
+import Slider from "react-slick";
+import { Settings } from "../common/setting";
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
 
 const Home = (props) => {
 
@@ -78,7 +77,7 @@ const Home = (props) => {
     )
 };
 
-const HomeSection=styled(motion.div)`
+const HomeSection=styled.div`
     overflow-x:hidden;
     padding:5rem 2rem;
     h2{
@@ -86,7 +85,7 @@ const HomeSection=styled(motion.div)`
     }
 `;
 
-const Games=styled(motion.div)`
+const Games=styled.div`
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
     grid-column-gap:1.3rem;

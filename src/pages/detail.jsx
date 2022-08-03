@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
 import {useParams} from 'react-router-dom';
 import Load from '../components/load';
 import { resize } from '../utils/resize';
@@ -94,7 +93,7 @@ const Detail = (props) => {
     )
 };
 
-const External=styled(motion.div)`
+const External=styled.div`
     display:flex;
     justify-content:center;
     width:100%;
@@ -119,7 +118,7 @@ const External=styled(motion.div)`
 
 `;
 
-const Board=styled(motion.div)`
+const Board=styled.div`
     width:80%;
     text-align:center;
     // padding:2rem;
