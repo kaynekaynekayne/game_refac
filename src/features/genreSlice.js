@@ -27,7 +27,6 @@ const genreSlice=createSlice({
     extraReducers:(builder)=>{
         builder
         .addCase(fetchGenre.fulfilled, (state,action)=>{
-            console.log("genre fulfilled")
             const {genreGames}=action.payload;
             state.genreInfo=genreGames; 
         })
