@@ -80,9 +80,7 @@ const Home = (props) => {
 const HomeSection=styled.div`
     overflow-x:hidden;
     padding:5rem 2rem;
-    h2{
-        padding:3rem 0;
-    }
+
 `;
 
 const Games=styled.div`
