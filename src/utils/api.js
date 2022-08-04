@@ -14,4 +14,6 @@ export const DETAIL_URL=(gameId)=>(`${BASE_URL}games/${gameId}.json?&key=${proce
 export const SCREENSHOT_URL=(gameId)=>(`${BASE_URL}games/${gameId}/screenshots?&key=${process.env.REACT_APP_KEY}`);
 
 export const SEARCH_URL=(game_name)=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}&search=${game_name}&page_size=9`
-export const GENRE_URL=()=>`${BASE_URL}genres?key=${process.env.REACT_APP_KEY}&page_size=10`
+
+export const GENRE_URL=()=>`${BASE_URL}genres?key=${process.env.REACT_APP_KEY}&page_size=10`;
+// export const GENRE_DETAIL_URL=(genreId)=>`${BASE_URL}genres/${genreId}.json?&key=${process.env.REACT_APP_KEY}`;

@@ -1,13 +1,12 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
 import {FaGamepad} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchSearch,clearSearching } from '../features/gameSlice';
+import { Link } from 'react-router-dom';
 
 const SearchHeader = (props) => {
     
-    const navigate=useNavigate();
     const dispatch=useDispatch();
 
     const [text, setText]=useState("");
@@ -27,9 +26,9 @@ const SearchHeader = (props) => {
 
     return(
         <HeaderSection>
-            <h1 onClick={clearResults}>
-                <FaGamepad></FaGamepad>
-            </h1>
+            <Link to="/">
+                <h1 onClick={clearResults}><FaGamepad></FaGamepad></h1>
+            </Link>
             <form onSubmit={submitHandler}>
                 <input 
                     type="text"

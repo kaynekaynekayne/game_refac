@@ -4,7 +4,6 @@ import { GAME_POP_URL, GAME_NEW_URL, GAME_UP_URL, SEARCH_URL } from "../utils/ap
 
 const initialState={
     popular:[],
-    newGames:[],
     upComing:[],
     searching:[],
     error:"",
@@ -17,12 +16,10 @@ export const fetchGames=createAsyncThunk(
         try{
             const upGames=await axios.get(GAME_UP_URL());
             // const popGames=await axios.get(GAME_POP_URL());
-            // const latestGames=await axios.get(GAME_NEW_URL());
             
             return {
                 upComing:upGames.data.results,
                 // popular:popGames.data.results,
-                // newGames:latestGames.data.results,
             };
 
         }catch(err){
@@ -60,7 +57,6 @@ const gameSlice=createSlice({
             const {popular, upComing, newGames}=action.payload;
             state.popular=popular;
             state.upComing=upComing;
-            state.newGames=newGames;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.error=action.error.message

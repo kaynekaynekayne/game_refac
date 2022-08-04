@@ -4,8 +4,8 @@ import { fetchGenre } from '../features/genreSlice';
 import { resize } from '../utils/resize';
 import Slider from 'react-slick';
 import { Settings } from '../common/setting';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 const Category = () => {
 
     const {genreInfo}=useSelector(state=>state.genre);
@@ -23,15 +23,14 @@ const Category = () => {
             <Box>
                 <Slider {...Settings}>
                     {genreInfo.map(genre=>(
-                        <div key={genre.id}>
+                        <Link to={`/genres/${genre.id}`} key={genre.id}>
                             <h3>{genre.name}</h3>
-
                             <Games>
                                 <ImgBox>   
                                     <img src={resize(genre.image_background, 1280)} />
                                 </ImgBox>
                             </Games>
-                        </div>
+                        </Link>
                     ))}
                 </Slider>
             </Box>
@@ -53,6 +52,7 @@ const Box=styled.div`
     width:100%;
     height:100%;
     padding:2rem;
+
     // overflow:hidden;
 
     h3{
@@ -67,24 +67,26 @@ const Games=styled.div`
     text-align:center;
     overflow:hidden;
     cursor:pointer;
-    position:relative;
-    div{
-        padding:2rem 0;
-    }
-    img{
-        width:100%;
-        object-fit:cover;
-        transition: all 0.5s ease-in-out;
-        opacity:0.8;
-        display:block;
-    }
-    img:hover{
-        transform: scale(1.3);
-    }
+    border-radius:0.8rem;
+    margin:0 0.3rem;
 `
 const ImgBox=styled.section`
     width:100%;
     height:13.5rem;
+    
+    
+    img{
+        border-radius:0.8rem;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transition: all 0.5s ease-in-out;
+        display:block;
+
+    }
+    img:hover{
+        transform: scale(1.3);
+    }
 `;
 
 export default Category;
