@@ -1,28 +1,30 @@
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Load from '../components/load';
+import { fetchGamesByGenre } from '../features/genreSlice';
+import { resize } from '../utils/resize';
 
 const Genres = () => {
 
     const {type}=useParams();
+    const dispatch=useDispatch();
 
-    const {genreInfo}=useSelector(state=>state.genre);
-
-    const selected=genreInfo.find(genre=>genre.id===parseInt(type))
-    const {games}=selected;
+    const {gamesByGenre, loading}=useSelector(state=>state.genre);
     
     useEffect(()=>{
-
-    },[type]);
+        dispatch(fetchGamesByGenre(type))
+    },[type, dispatch]);
 
     return (
         <div>
-            {games.map(game=>(
+            {loading ? <Load /> :
+            gamesByGenre.map(game=>
                 <div key={game.id}>
                     <span>{game.name}</span>
-                    {/* <div></div> */}
+                    <img src={resize(game.background_image, 1280)} alt={game.name}/>
                 </div>
-            ))}
+            )}
         </div>
     );
 };

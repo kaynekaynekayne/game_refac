@@ -15,51 +15,51 @@ const Home = (props) => {
 
     return(
         <HomeSection>
-                {searching.length ?         
-                    <div>
-                        <h2>Results</h2>
-                        <Games>
-                            {searching.map(game=>(
-                                <Game 
-                                    name={game.name} 
-                                    released={game.released} 
-                                    id={game.id}
-                                    image={game.background_image}
-                                    key={game.id}
-                                />
-                            ))}
-                        </Games>
-                    </div>
-                :
-                (
-                    <div>
-                        <h2>Upcoming</h2>
-                        <Games>
-                            {upComing.map(item=>
-                                <Game 
-                                    name={item.name}
-                                    released={item.released}
-                                    id={item.id} 
-                                    image={item.background_image}
-                                    key={item.id}
-                                />
-                            )} 
-                        </Games>
-                        <h2>Popular</h2>
-                        {/* <Games>
-                            {popular.map(item=>
-                                <Game 
-                                    name={item.name}
-                                    released={item.released}
-                                    id={item.id} 
-                                    image={item.background_image}
-                                    key={item.id}
-                                />
-                            )} 
-                        </Games>
-                        */}
-                    </div>
-                )}
+            {searching.length ?         
+                <div>
+                    <h2>Results</h2>
+                    <Games>
+                        {searching.map(game=>(
+                            <Game 
+                                name={game.name} 
+                                released={game.released} 
+                                id={game.id}
+                                image={game.background_image}
+                                key={game.id}
+                            />
+                        ))}
+                    </Games>
+                </div>
+            :
+            (
+                <div>
+                    <h2>Upcoming</h2>
+                    <Games>
+                        {upComing.map(item=>
+                            <Game 
+                                name={item.name}
+                                released={item.released}
+                                id={item.id} 
+                                image={item.background_image}
+                                key={item.id}
+                            />
+                        )} 
+                    </Games>
+                    <h2>Popular</h2>
+                    {/* <Games>
+                        {popular.map(item=>
+                            <Game 
+                                name={item.name}
+                                released={item.released}
+                                id={item.id} 
+                                image={item.background_image}
+                                key={item.id}
+                            />
+                        )} 
+                    </Games>
+                    */}
+                </div>
+            )}
         </HomeSection>
     )
 };

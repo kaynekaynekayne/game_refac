@@ -10,11 +10,10 @@ export const GAME_POP_URL=()=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}
 export const GAME_UP_URL=()=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}${upcomings}`;
 export const GAME_NEW_URL=()=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}${news}`;
 
-export const DETAIL_URL=(gameId)=>(`${BASE_URL}games/${gameId}.json?&key=${process.env.REACT_APP_KEY}`);
-export const SCREENSHOT_URL=(gameId)=>(`${BASE_URL}games/${gameId}/screenshots?&key=${process.env.REACT_APP_KEY}`);
+export const DETAIL_URL=(game_id)=>(`${BASE_URL}games/${game_id}.json?&key=${process.env.REACT_APP_KEY}`);
+export const SCREENSHOT_URL=(game_id)=>(`${BASE_URL}games/${game_id}/screenshots?&key=${process.env.REACT_APP_KEY}`);
 
 export const SEARCH_URL=(game_name)=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}&search=${game_name}&page_size=9`
 
 export const GENRE_URL=()=>`${BASE_URL}genres?key=${process.env.REACT_APP_KEY}&page_size=10`;
-//
-export const GENRE_DETAIL_URL=(genreId)=>`${BASE_URL}genres/${genreId}?key=${process.env.REACT_APP_KEY}`;
+export const GENRE_GAMES_URL=(genre_id)=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}&genres=${genre_id}&ordering=-rating&page_size=10`
