@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from '../features/gameSlice';
+import { fetchGames, clearSearching  } from '../features/gameSlice';
 import Game from '../components/game';
-import Slider from "react-slick";
-import { Settings } from "../common/setting";
 import styled from 'styled-components';
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, newGames, searching, loading}=useSelector(state=>state.games);
+    const {popular, upComing, newGames, searching}=useSelector(state=>state.games);
 
     useEffect(()=>{
-        dispatch(fetchGames())
+        dispatch(fetchGames());
     },[dispatch]);
 
     return(
@@ -59,18 +57,7 @@ const Home = (props) => {
                                 />
                             )} 
                         </Games>
-                        <h2>Latest</h2>
-                        <Games>
-                            {newGames.map(item=>
-                                <Game 
-                                    name={item.name}
-                                    released={item.released}
-                                    id={item.id} 
-                                    image={item.background_image}
-                                    key={item.id}
-                                />
-                            )} 
-                        </Games> */}
+                        */}
                     </div>
                 )}
         </HomeSection>

@@ -48,7 +48,6 @@ const Detail = (props) => {
     return(
         <External className="external" onClick={goBackHandler}>
             <Board>
-                {/*Object.keys(detailInfo).length===0*/}
                 {loading ? <Load /> : (
                     <div>
                         <h1>{detailInfo.name}</h1>

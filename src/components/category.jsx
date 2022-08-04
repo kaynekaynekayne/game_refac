@@ -9,7 +9,6 @@ import styled from 'styled-components';
 const Category = () => {
 
     const {genreInfo}=useSelector(state=>state.genre);
-    console.log(genreInfo);
 
     const dispatch=useDispatch();
 

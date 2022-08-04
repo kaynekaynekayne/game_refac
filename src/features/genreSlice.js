@@ -20,6 +20,7 @@ export const fetchGenre=createAsyncThunk(
     }
 );
 
+
 const genreSlice=createSlice({
     name:"genre",
     initialState,

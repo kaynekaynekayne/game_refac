@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import {FaGamepad} from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { fetchSearch,clearSearching } from '../features/gameSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SearchHeader = (props) => {
     
+    const navigate=useNavigate();
     const dispatch=useDispatch();
 
     const [text, setText]=useState("");
@@ -18,6 +19,7 @@ const SearchHeader = (props) => {
         e.preventDefault();
         dispatch(fetchSearch(text));
         setText("");
+        navigate("/");
     }
 
     const clearResults=()=>{
