@@ -21,8 +21,8 @@ const Genres = () => {
             {loading ? <Load /> :
             gamesByGenre.map(game=>
                 <div key={game.id}>
-                    <span>{game.name}</span>
                     <img src={resize(game.background_image, 1280)} alt={game.name}/>
+                    <span>{game.name}</span>
                 </div>
             )}
         </div>
