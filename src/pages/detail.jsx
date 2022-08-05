@@ -25,7 +25,6 @@ const Detail = (props) => {
     const goBackHandler=(event)=>{
         const {target}=event;
         if(target.classList.contains('external')){
-            // document.body.style.overflow="auto";
             window.history.back();
         }
     };

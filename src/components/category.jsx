@@ -17,7 +17,6 @@ const Category = () => {
 
     return (
         <Section>
-            {/* <h2>Categories</h2> */}
             <Box>
                 <Slider {...Settings}>
                     {genreInfo.map(genre=>(
@@ -49,7 +48,7 @@ const Section=styled.section`
 const Box=styled.div`
     width:100%;
     height:100%;
-    padding:2rem;
+    padding:1rem 2rem;
 
     // overflow:hidden;
 

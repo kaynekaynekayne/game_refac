@@ -9,7 +9,7 @@ const Home = (props) => {
 
     const dispatch=useDispatch();
     const {popular, upComing, searching}=useSelector(state=>state.games);
-    console.log(Object.keys(upComing).length, Object.keys(popular).length)
+
     useEffect(()=>{
         dispatch(fetchGames());
     },[dispatch]);
@@ -32,7 +32,10 @@ const Home = (props) => {
                     </Games>
                 </div>
             :
-            (Object.keys(upComing).length===0 && Object.keys(popular).length===0 ? <Load /> : (
+            (Object.keys(upComing).length===0 
+            // && Object.keys(popular).length===0 
+            //위 코드 살려야 함 삭제하면 안됨
+            ? <Load /> : (
                 <div>
                     <h2>Upcoming</h2>
                     <Games>
@@ -47,18 +50,17 @@ const Home = (props) => {
                         )} 
                     </Games>
                     <h2>Popular</h2>
-                    <Games>
+                    {/* <Games>
                         {popular.map(item=>
                             <Game 
                                 name={item.name}
-                                released={item.released}
                                 id={item.id} 
                                 image={item.background_image}
                                 key={item.id}
+                                released={(item.released.split("-"))[0]}
                             />
                         )} 
-                    </Games>
-                   
+                    </Games> */}
                 </div>
             ))
             }
@@ -68,7 +70,7 @@ const Home = (props) => {
 
 const HomeSection=styled.div`
     overflow-x:hidden;
-    padding:5rem 2rem;
+    padding:0.5rem 2rem;
 
 `;
 

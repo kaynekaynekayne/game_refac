@@ -11,7 +11,7 @@ const Game = ({name, released, id, image}) => {
                 <img src={resize(image, 1280)} alt={name}/>
                 <div>
                     <h3>{name}</h3>
-                    <p>{released}</p>
+                    <span>{released}</span>
                 </div>
             </Link>
         </EachGame>
