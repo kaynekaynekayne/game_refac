@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchGenre } from '../features/genreSlice';
 import { resize } from '../utils/resize';
 import Slider from 'react-slick';
-import { Settings } from '../common/setting';
+import { CategorySettings } from '../common/setting';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 const Category = () => {
@@ -18,9 +18,9 @@ const Category = () => {
     return (
         <Section>
             <Box>
-                <Slider {...Settings}>
+                <Slider {...CategorySettings}>
                     {genreInfo.map(genre=>(
-                        <Link to={`/genres/${genre.id}`} key={genre.id}>
+                        <Link to={`/genres/${genre.slug}`} key={genre.id}>
                             <h3>{genre.name}</h3>
                             <Games>
                                 <ImgBox>   

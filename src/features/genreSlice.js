@@ -24,9 +24,9 @@ export const fetchGenre=createAsyncThunk(
 
 export const fetchGamesByGenre=createAsyncThunk(
     "genre/fetchGamesByGenre",
-    async(genreId)=>{
+    async(genreName)=>{
         try{
-            const games=await axios.get(GENRE_GAMES_URL(genreId));
+            const games=await axios.get(GENRE_GAMES_URL(genreName));
             return {
                 gameByGenre:games.data.results
             }
