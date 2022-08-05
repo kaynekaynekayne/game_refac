@@ -17,8 +17,8 @@ export const CategorySettings={
         {
             breakpoint: 768,
             settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             infinite: true,
             dots: false,
             }
@@ -27,10 +27,23 @@ export const CategorySettings={
 };
 
 export const GamesByGenreSettings={
-    dots: true,
-    fade: true,
+    className: "center",
+    centerMode: true,
     infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 3,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    responsive: [
+        {
+            breakpoint: 768,
+            settings: {
+                dots: true,
+                fade: true,
+                infinite: true,
+                speed: 600,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        },
+    ]
 }

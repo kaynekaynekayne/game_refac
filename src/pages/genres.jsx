@@ -2,11 +2,11 @@ import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Load from '../components/load';
-import { fetchGamesByGenre } from '../features/genreSlice';
+import { fetchGamesByGenre, clearGenres } from '../features/genreSlice';
 import { resize } from '../utils/resize';
 import Slider from 'react-slick';
-// import { GamesByGenreSettings } from '../common/setting';
-// import styled from 'styled-components';
+import { GamesByGenreSettings } from '../common/setting';
+import styled from 'styled-components';
 
 const Genres = () => {
 
@@ -23,30 +23,49 @@ const Genres = () => {
         <div style={{padding:'2rem'}}>
             <h2>{`${type} games`}</h2>
             {loading ? <Load /> :
-                gamesByGenre.map(game=>
-                    <div key={game.id} style={{margin:'0 auto'}}>
+            <Box>
+                {gamesByGenre.map(game=>(
+                    <Games  key={game.id} style={{margin:'0 auto'}}>
                         <Link to={`/detail/${game.id}`} >
-                            {/* <ImgBox> */}
-                                <img src={resize(game.background_image, 1280)} alt={game.name}/>
-                            {/* </ImgBox> */}
-                            <span>{game.name}</span>
+                            <Games>
+                                <ImgBox>
+                                    <img src={resize(game.background_image, 1280)} alt={game.name}/>
+                                </ImgBox>
+                                <h3>{game.name}</h3>
+                            </Games>
                         </Link>
-                    </div>
-                )
+                    </Games>
+                ))}
+            </Box>
             }
         </div>
     );
 };
 
-// const Box=styled.div`
-//     width:100%;
-//     height:100%;
-//     padding:1rem 2rem;
-// `;
+const Box=styled.div`
+    overflow-x:hidden;
+    padding:0.8rem 2rem;
 
+`;
 
-// const ImgBox=styled.div`
-// width:100%;
-// height:100%;
-// `
+const Games=styled.div`
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap:1.3rem;
+    grid-row-gap:4rem;
+`
+const ImgBox=styled.div`
+    width:100%;
+    height:15rem;
+    img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        transition: all 0.2s ease-in-out;
+        display:block;
+    }
+    img:hover{
+        opacity:0.4;
+    }
+`
 export default Genres;

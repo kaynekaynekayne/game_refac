@@ -23,7 +23,7 @@ const Home = (props) => {
                         {searching.map(game=>(
                             <Game 
                                 name={game.name} 
-                                released={(game.released.split("-"))[0]} 
+                                released={game.released && (game.released.split("-"))[0]} 
                                 id={game.id}
                                 image={game.background_image}
                                 key={game.id}
@@ -37,7 +37,7 @@ const Home = (props) => {
             //위 코드 살려야 함 삭제하면 안됨
             ? <Load /> : (
                 <div>
-                    <h2>Upcoming</h2>
+                    <h2>Upcoming releases</h2>
                     <Games>
                         {upComing.map(item=>
                             <Game 
@@ -57,7 +57,7 @@ const Home = (props) => {
                                 id={item.id} 
                                 image={item.background_image}
                                 key={item.id}
-                                released={(item.released.split("-"))[0]}
+                                released={item.released && (item.released.split("-"))[0]}
                             />
                         )} 
                     </Games> */}
