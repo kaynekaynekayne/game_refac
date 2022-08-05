@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Load from '../components/load';
 import { fetchGamesByGenre } from '../features/genreSlice';
 import { resize } from '../utils/resize';
@@ -21,8 +21,10 @@ const Genres = () => {
             {loading ? <Load /> :
             gamesByGenre.map(game=>
                 <div key={game.id}>
-                    <img src={resize(game.background_image, 1280)} alt={game.name}/>
-                    <span>{game.name}</span>
+                    <Link to={`/detail/${game.id}`}>
+                        <img src={resize(game.background_image, 1280)} alt={game.name}/>
+                        <span>{game.name}</span>
+                    </Link>
                 </div>
             )}
         </div>

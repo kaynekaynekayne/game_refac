@@ -32,11 +32,13 @@ const Detail = (props) => {
     const showPlatform=(platform)=>{
         return(
             {
+                "PlayStation 3":<FaPlaystation></FaPlaystation>,
                 "PlayStation 4":<FaPlaystation></FaPlaystation>,
                 "PlayStation 5":<FaPlaystation></FaPlaystation>,
                 "Xbox Series S/X":<FaXbox></FaXbox>,
                 "Xbox S":<FaXbox></FaXbox>,
                 "Xbox One":<FaXbox></FaXbox>,
+                "Xbox 360":<FaXbox></FaXbox>,
                 "Nintendo Switch":<FaGamepad></FaGamepad>,
                 "PC":<FaSteam></FaSteam>,
                 "iOS":<FaApple></FaApple>,
@@ -48,7 +50,7 @@ const Detail = (props) => {
         <External className="external" onClick={goBackHandler}>
             <Board>
                 {loading ? <Load /> : (
-                    <div>
+                    <section>
                         <h1>{detailInfo.name}</h1>
                         <section className="main">
                             <img src={resize(detailInfo.background_image,1280)} alt="image"/>
@@ -58,23 +60,26 @@ const Detail = (props) => {
                             </div>
                             <h4>{detailInfo.description_raw}</h4>
                         </section>
-                        <section className='rating'>
-                            {detailInfo.rating && detailInfo.ratings.map(mark=>
-                                <h5 key={mark.id}>{mark.title} - {mark.percent}%</h5>
-                            )}
-                            {detailInfo.metacritic &&
-                                <h5>{`Metacritic: ${detailInfo.metacritic}`}</h5>
-                            }
-                        </section>
-                        <section className="platforms">
-                            <h4>You can enjoy this game in</h4>
-                            {detailInfo.platforms && detailInfo.platforms.map(item=>(
-                                <div key={item.platform.id}>
-                                    <span>{showPlatform(item.platform.name)}</span>
-                                    {/* <img src={showPlatform(item.platform.name)}></img> */}
-                                    <span>{item.platform.name}</span>
+                        <section>
+                            <div className='rating'>
+                                {detailInfo.rating && detailInfo.ratings.map(mark=>
+                                    <h5 key={mark.id}>{`${mark.title} ${mark.percent}% (${mark.count})`}</h5>
+                                )}
+                                {detailInfo.metacritic &&
+                                    <h5>{`Metacritic: ${detailInfo.metacritic}`}</h5>
+                                }
+                            </div>
+                            <div className="platforms">
+                                <p>You can enjoy this game in</p>
+                                <div>
+                                    {detailInfo.platforms && detailInfo.platforms.map(item=>(
+                                        <div key={item.platform.id}>
+                                            <span>{showPlatform(item.platform.name)}</span>
+                                            <span>{item.platform.name}</span>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
                         </section>
                         <section className='playshots'>
                             {screenShots.results && screenShots.results.map(shot=>
@@ -84,7 +89,7 @@ const Detail = (props) => {
                                 </div>
                             )}
                         </section>
-                    </div>
+                    </section>
                 )}
             </Board>
         </External>
@@ -105,14 +110,6 @@ const External=styled.div`
     &::-webkit-scrollbar{
         display:none;
     }
-    h1,h3{
-        padding:1.5rem;
-    }
-
-    h4{
-        text-align:left;
-        padding:0 1.5rem;
-    }
 
 `;
 
@@ -122,14 +119,24 @@ const Board=styled.div`
     // padding:2rem;
     background:white;
     color:black;
-    
+    font-family: 'Poppins', sans-serif;
     position:absolute;
+    h1{
+        margin:1rem;
+    }
+
+    h4{
+        text-align:justify;
+        margin:0 1.5rem;
+    }
+
     img{
         width:100%;
         display:block;
     }
-    span{
-        font-weight:bolder;
-    }
 `
+
+const PlatformsBox=styled.div`
+    text-align:right;
+`;
 export default Detail;

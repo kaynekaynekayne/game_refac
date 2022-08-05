@@ -23,7 +23,7 @@ const Home = (props) => {
                         {searching.map(game=>(
                             <Game 
                                 name={game.name} 
-                                released={game.released} 
+                                released={(game.released.split("-"))[0]} 
                                 id={game.id}
                                 image={game.background_image}
                                 key={game.id}
@@ -70,7 +70,7 @@ const Home = (props) => {
 
 const HomeSection=styled.div`
     overflow-x:hidden;
-    padding:0.5rem 2rem;
+    padding:0.8rem 2rem;
 
 `;
 
