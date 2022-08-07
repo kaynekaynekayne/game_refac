@@ -6,7 +6,7 @@ import Load from '../components/load';
 import { resize } from '../utils/resize';
 import RatingStars from '../components/ratingStars';
 import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
-import {FaPlaystation, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay} from 'react-icons/fa';
+import {FaPlaystation, FaLinux, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay, FaAndroid} from 'react-icons/fa';
 
 const Detail = (props) => {
     const {id}=useParams();
@@ -30,20 +30,24 @@ const Detail = (props) => {
     };
 
     const showPlatform=(platform)=>{
-        return(
-            {
-                "PlayStation 3":<FaPlaystation></FaPlaystation>,
-                "PlayStation 4":<FaPlaystation></FaPlaystation>,
-                "PlayStation 5":<FaPlaystation></FaPlaystation>,
-                "Xbox Series S/X":<FaXbox></FaXbox>,
-                "Xbox S":<FaXbox></FaXbox>,
-                "Xbox One":<FaXbox></FaXbox>,
-                "Xbox 360":<FaXbox></FaXbox>,
-                "Nintendo Switch":<FaGamepad></FaGamepad>,
-                "PC":<FaSteam></FaSteam>,
-                "iOS":<FaApple></FaApple>,
-            }[platform]||<FaPlay></FaPlay>
-        )
+        switch(platform.split(" ")[0]){
+            case "PlayStation":
+                return <FaPlaystation></FaPlaystation>
+            case "Xbox":
+                return <FaXbox></FaXbox>
+            case "Nintendo":
+                return <FaGamepad></FaGamepad>
+            case "PC":
+                return <FaSteam></FaSteam>
+            case "iOS":
+                return <FaApple></FaApple>
+            case "Android":
+                return <FaAndroid></FaAndroid>
+            case "Linux":
+                return <FaLinux></FaLinux>
+            default:
+                return <FaPlay></FaPlay>
+        }
     };
 
     return(
