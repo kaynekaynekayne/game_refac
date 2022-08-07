@@ -2,10 +2,8 @@ import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Load from '../components/load';
-import { fetchGamesByGenre, clearGenres } from '../features/genreSlice';
+import { fetchGamesByGenre} from '../features/genreSlice';
 import { resize } from '../utils/resize';
-import Slider from 'react-slick';
-import { GamesByGenreSettings } from '../common/setting';
 import styled from 'styled-components';
 
 const Genres = () => {
@@ -25,13 +23,13 @@ const Genres = () => {
             {loading ? <Load /> :
             <Box>
                 {gamesByGenre.map(game=>(
-                    <Games  key={game.id} style={{margin:'0 auto'}}>
+                    <Games key={game.id} style={{margin:'0 auto'}}>
                         <Link to={`/detail/${game.id}`} >
                             <Games>
                                 <ImgBox>
                                     <img src={resize(game.background_image, 1280)} alt={game.name}/>
                                 </ImgBox>
-                                <h3>{game.name}</h3>
+                                    <h3>{game.name}</h3>
                             </Games>
                         </Link>
                     </Games>
@@ -43,16 +41,18 @@ const Genres = () => {
 };
 
 const Box=styled.div`
-    overflow-x:hidden;
-    padding:0.8rem 2rem;
+    // overflow-x:hidden;
+    // padding:0.8rem 2rem;
+    font-family: 'Poppins', sans-serif;
 
 `;
 
 const Games=styled.div`
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-    grid-column-gap:1.3rem;
-    grid-row-gap:4rem;
+    grid-column-gap:1rem;
+    padding:0.3rem;
+    
 `
 const ImgBox=styled.div`
     width:100%;
@@ -65,7 +65,8 @@ const ImgBox=styled.div`
         display:block;
     }
     img:hover{
-        opacity:0.4;
+        opacity:0.5;
     }
+    
 `
 export default Genres;

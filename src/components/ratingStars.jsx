@@ -11,8 +11,8 @@ const RatingStars = (props) => {
                 rating={detailInfo.rating}
                 numberOfStars={detailInfo.rating_top}
                 starDimension="1.2rem"
-                starRatedColor="rgb(62,62,62)"
-                starEmptyColor="lightgrey"
+                starRatedColor="rgb(250, 225, 112)"
+                starEmptyColor="rgb(230, 229, 227)"
                 starSpacing="0.5px"
                 name="rating"
             />
