@@ -17,13 +17,13 @@ const Category = () => {
 
     return (
         <section>
-            <div className="container">
+            <div className="category-container">
                 <Slider {...CategorySettings}>
                     {genreInfo.map(genre=>(
                         <Link to={`/genres/${genre.slug}`} key={genre.id}>
                             <h3>{genre.name}</h3>
-                            <div className="box">
-                                <div className="img_box">   
+                            <div className="category-box">
+                                <div className="img-box">   
                                     <img src={resize(genre.image_background, 1280)} />
                                 </div>
                             </div>
