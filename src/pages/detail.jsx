@@ -55,15 +55,15 @@ const Detail = (props) => {
                 {loading ? <Load /> : (
                     <section>
                         <h1>{detailInfo.name}</h1>
-                        <section className="main">
+                        <div className="main">
                             <img src={resize(detailInfo.background_image,1280)} alt="image"/>
                             <div style={{padding:'1.5rem'}}>
                                 <RatingStars />
                                 <span>{`(${detailInfo.rating}/${detailInfo.rating_top})`}</span>
                             </div>
                             <h4>{detailInfo.description_raw}</h4>
-                        </section>
-                        <section>
+                        </div>
+                        <div>
                             <div className='rating'>
                                 {detailInfo.rating && detailInfo.ratings.map(mark=>
                                     <h5 key={mark.id}>{`${mark.title} ${mark.percent}% (${mark.count})`}</h5>
@@ -83,7 +83,7 @@ const Detail = (props) => {
                                     ))}
                                 </div>
                             </div>
-                        </section>
+                        </div>
                         <section className='playshots'>
                             {screenShots.results && screenShots.results.map(shot=>
                                 <div key={shot.id}>
