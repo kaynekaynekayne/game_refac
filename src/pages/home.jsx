@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames, clearSearching  } from '../features/gameSlice';
 import Game from '../components/game';
-import styled from 'styled-components';
 import Load from "../components/load";
 
 const Home = (props) => {
@@ -15,11 +14,11 @@ const Home = (props) => {
     },[dispatch]);
 
     return(
-        <HomeSection>
+        <section className="home">
             {searching.length ?         
                 <div>
                     <h2>Results</h2>
-                    <Games>
+                    <div className="games">
                         {searching.map(game=>(
                             <Game 
                                 name={game.name} 
@@ -29,7 +28,7 @@ const Home = (props) => {
                                 key={game.id}
                             />
                         ))}
-                    </Games>
+                    </div>
                 </div>
             :
             (Object.keys(upComing).length===0 
@@ -38,7 +37,7 @@ const Home = (props) => {
             ? <Load /> : (
                 <div>
                     <h2>Upcoming releases</h2>
-                    <Games>
+                    <div className="games">
                         {upComing.map(item=>
                             <Game 
                                 name={item.name}
@@ -48,9 +47,9 @@ const Home = (props) => {
                                 key={item.id}
                             />
                         )} 
-                    </Games>
+                    </div>
                     <h2>Popular</h2>
-                    {/* <Games>
+                    {/* <div className="games">
                         {popular.map(item=>
                             <Game 
                                 name={item.name}
@@ -60,25 +59,12 @@ const Home = (props) => {
                                 released={item.released && (item.released.split("-"))[0]}
                             />
                         )} 
-                    </Games> */}
+                    </div> */}
                 </div>
             ))
             }
-        </HomeSection>
+        </section>
         )
     };
-
-const HomeSection=styled.div`
-    overflow-x:hidden;
-    padding:0.8rem 2rem;
-
-`;
-
-const Games=styled.div`
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-    grid-column-gap:1.3rem;
-    grid-row-gap:4rem;
-`
 
 export default Home;

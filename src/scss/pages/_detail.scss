@@ -1,0 +1,33 @@
+.external{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;    
+    background:rgba(0,0,0,0.7); 
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.board{
+    width:80%;
+    text-align:center;
+    background:white;
+    color:black;
+    font-family: 'Poppins', sans-serif;
+    position:absolute;
+    h1{
+        margin:1rem;
+    }
+
+    h4{
+        text-align:justify;
+        margin:0 1.5rem;
+    }
+
+    img{
+        width:100%;
+        display:block;
+    }
+}

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import styled from 'styled-components';
 import {useParams} from 'react-router-dom';
 import Load from '../components/load';
 import { resize } from '../utils/resize';
@@ -51,8 +50,8 @@ const Detail = (props) => {
     };
 
     return(
-        <External className="external" onClick={goBackHandler}>
-            <Board>
+        <div className="external" onClick={goBackHandler}>
+            <div className='board'>
                 {loading ? <Load /> : (
                     <section>
                         <h1>{detailInfo.name}</h1>
@@ -95,52 +94,11 @@ const Detail = (props) => {
                         </section>
                     </section>
                 )}
-            </Board>
-        </External>
+            </div>
+        </div>
     )
 };
 
-const External=styled.div`
-    display:flex;
-    justify-content:center;
-    width:100%;
-    min-height:100vh;
-    overflow-x:hidden;
-    background:rgba(0,0,0,0.7); 
-    position:fixed;
-    top:0;
-    left:0;
 
-    &::-webkit-scrollbar{
-        display:none;
-    }
 
-`;
-
-const Board=styled.div`
-    width:80%;
-    text-align:center;
-    // padding:2rem;
-    background:white;
-    color:black;
-    font-family: 'Poppins', sans-serif;
-    position:absolute;
-    h1{
-        margin:1rem;
-    }
-
-    h4{
-        text-align:justify;
-        margin:0 1.5rem;
-    }
-
-    img{
-        width:100%;
-        display:block;
-    }
-`
-
-const PlatformsBox=styled.div`
-    text-align:right;
-`;
 export default Detail;
