@@ -17,17 +17,19 @@
     color:black;
     font-family: 'Poppins', sans-serif;
     position:absolute;
+
     h1{
         margin:1rem;
     }
-
-    h4{
-        text-align:justify;
-        margin:0 1.5rem;
-    }
-
     img{
         width:100%;
         display:block;
+    }
+}
+
+.main{
+    padding:2rem;
+    h4{
+        text-align:justify;
     }
 }

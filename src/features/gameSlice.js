@@ -33,9 +33,7 @@ export const fetchSearch=createAsyncThunk(
     async(gameName)=>{
         try{
             const searchGames=await axios.get(SEARCH_URL(gameName));
-            return{
-                searchedGames:searchGames.data.results,
-            };
+            return searchGames.data.results;
 
         }catch(err){
             return err;
@@ -62,8 +60,7 @@ const gameSlice=createSlice({
             state.error=action.error.message
         })
         .addCase(fetchSearch.fulfilled, (state,action)=>{
-            const {searchedGames}=action.payload;
-            state.searching=searchedGames;
+            state.searching=action.payload;
         })
     }
 })

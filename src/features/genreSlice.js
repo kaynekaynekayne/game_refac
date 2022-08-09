@@ -13,9 +13,7 @@ export const fetchGenre=createAsyncThunk(
     async()=>{
         try{
             const genres=await axios.get(GENRE_URL());
-            return {
-                genreGames:genres.data.results
-            };
+            return genres.data.results;
         }catch(err){
             return err;
         }
@@ -27,9 +25,7 @@ export const fetchGamesByGenre=createAsyncThunk(
     async(genreName)=>{
         try{
             const games=await axios.get(GENRE_GAMES_URL(genreName));
-            return {
-                gameByGenre:games.data.results
-            }
+            return games.data.results;
         }catch(err){
             return err;
         }
@@ -44,15 +40,14 @@ const genreSlice=createSlice({
     extraReducers:(builder)=>{
         builder
         .addCase(fetchGenre.fulfilled, (state,action)=>{
-            const {genreGames}=action.payload;
-            state.genreInfo=genreGames; 
+            state.genreInfo=action.payload;
+
         })
         .addCase(fetchGamesByGenre.pending, (state,action)=>{
             state.loading=true;
         })
         .addCase(fetchGamesByGenre.fulfilled, (state,action)=>{
-            const {gameByGenre}=action.payload;
-            state.gamesByGenre=gameByGenre;
+            state.gamesByGenre=action.payload;
             state.loading=false;
         })
     }
