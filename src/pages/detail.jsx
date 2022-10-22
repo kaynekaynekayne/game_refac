@@ -2,23 +2,20 @@ import React, { useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import Load from '../components/load';
-import { resize } from '../utils/resize';
 import RatingStars from '../components/ratingStars';
+import { resize } from '../utils/resize';
 import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
 import {
     FaPlaystation, 
-    FaLinux, 
     FaSteam, 
     FaXbox, 
     FaApple, 
     FaGamepad, 
-    FaPlay, 
-    FaAndroid,
-    FaRegGrinStars,
-    FaRegGrinBeam,
-    FaRegMehRollingEyes,
-    FaRegFrown
+    FaPlay,
+    FaGooglePlay,
+    FaItchIo,FaRegGrinStars,FaRegGrinBeam,FaRegMehRollingEyes,FaRegFrown
 } from 'react-icons/fa';
+import {SiEpicgames, SiNintendo3Ds} from 'react-icons/si'
 
 const Detail = () => {
     const {id}=useParams();
@@ -32,12 +29,13 @@ const Detail = () => {
         rating_top,
         ratings, 
         metacritic, 
-        description_raw,
-        tags, 
         ratings_count,
-        platforms
-    }, screenShots, loading}=data;
+    }, 
+    screenShots, 
+    sellStores,
+    loading}=data;
 
+    console.log(sellStores.results);
     useEffect(()=>{
         dispatch(fetchDetail(id));
         return ()=>{
@@ -55,40 +53,46 @@ const Detail = () => {
     const showRating=(rating)=>{
         switch(rating){
             case "exceptional":
+                return <FaRegGrinStars size="24"/>
                 return "최고예요 "
-                return <FaRegGrinStars size="24" color="FF2424"/>
             case "recommended":
-                return "추천해요 "
                 return <FaRegGrinBeam size="24"/>
+                return "추천해요 "
             case "meh":
-                return "별로예요 "
                 return <FaRegMehRollingEyes size="24"/>
+                return "별로예요 "
             case "skip":
-                return "싫어요 "
                 return <FaRegFrown size="24"/>
+                return "싫어요 "
             default:
                 return;
         }
     };
 
-    const showPlatform=(platform)=>{
-        switch(platform.split(" ")[0]){
-            case "PlayStation":
-                return <FaPlaystation/>
-            case "Xbox":
-                return <FaXbox/>
-            case "Nintendo":
-                return <FaGamepad/>
-            case "PC":
-                return <FaSteam/>
-            case "iOS":
-                return <FaApple/>
-            case "Android":
-                return <FaAndroid/>
-            case "Linux":
-                return <FaLinux/>
+    const showPlatform=(id)=>{
+        switch(id){
+            case 1:
+                return <FaSteam size="24"/>
+            case 2:
+                return <FaXbox size="24"/>
+            case 3:
+                return <FaPlaystation size="24"/>
+            case 4:
+                return <FaApple size="24"/>
+            case 5:
+                return <FaGamepad size="24"/>
+            case 6:
+                return <SiNintendo3Ds size="24"/>
+            case 7:
+                return <FaXbox size="24"/>
+            case 8:
+                return <FaGooglePlay size="24"/>
+            case 9:
+                return <FaItchIo size="24"/>
+            case 11:
+                return <SiEpicgames size="24"/>
             default:
-                return <FaPlay/>
+                return <FaPlay size="24"/>
         }
     };
 
@@ -97,37 +101,43 @@ const Detail = () => {
             {loading ? <Load /> : (
                 <div className='board'>
                     <h1>{name}</h1>
-                    <img src={resize(background_image,1280)} alt="image"/>
-                    <div className="main">
-                        <div>
-                            <h3>평가</h3>
-                            <div className='rating-stars'>
-                                <RatingStars />
-                                <h4>{rating_top===0 ? "아직 평점이 없습니다" : `(${rating}/${rating_top}) [${ratings_count}]`}</h4>
-                            </div>
-                            <div className='rating'>
-                                {ratings && ratings.map(mark=>
-                                    <div key={mark.id} >
-                                        <span>{showRating(mark.title)}</span>
-                                        {/* <span>{highPercent(mark.percent)}</span> */}
-                                        <span>{`${mark.percent}%`}</span>
-                                        {console.log(mark)}
-                                    </div>
-                                )}
-                                {metacritic &&
-                                    <strong>{`메타크리틱 - ${metacritic}`}</strong>
-                                }
-                            </div>
+                    <div style={{display:'flex',flexWrap:'wrap', width:'100%', padding:'1.5rem'}}>
+                        <div style={{flexBasis:'80%'}}>
+                            <img src={resize(background_image,1280)} alt="image"/>
                         </div>
-                        <div className="platforms">
-                            <h3>플랫폼</h3>
+                        <div className="main"  style={{flexBasis:'20%'}}>
                             <div>
-                                {platforms && platforms.map(item=>(
-                                    <div key={item.platform.id}>
-                                        <span>{showPlatform(item.platform.name)}</span>
-                                        <span>{item.platform.name}</span>
-                                    </div>
-                                ))}
+                                <h3>평가</h3>
+                                <div className='rating-stars'>
+                                    <RatingStars />
+                                    <h4>{rating_top===0 ? "아직 평점이 없습니다" : `(${rating}/${rating_top}) [${ratings_count}]`}</h4>
+                                    {metacritic && metacritic>=90 && <h4>다수의 유저들이 이 게임을 높게 평가합니다!</h4>}
+                                </div>
+                                <div className='rating'>
+                                    {ratings && ratings.map(mark=>
+                                        <div key={mark.id} style={{display:'flex',justifyContent:'space-between'}}>
+                                            <span>{showRating(mark.title)}</span>
+                                            <span>{`${mark.percent}%`}</span>
+                                        </div>
+                                    )}
+                                    {metacritic &&
+                                        <strong>{`메타크리틱 - ${metacritic}`}</strong>
+                                    }
+                                </div>
+                            </div>
+                            <div className="platforms">
+                                <h3>구매</h3>
+                                <div>
+                                    {sellStores.results && sellStores.results.map(item=>(
+                                        <div className='stores'
+                                            key={item.id} 
+                                            onClick={()=>window.open(item.url, '_blank')} 
+                                        > 
+                                            {showPlatform(item.store_id)}
+                                            <h5>{(item.url).split(".")[1]}</h5>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>

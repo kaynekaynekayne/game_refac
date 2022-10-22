@@ -30,14 +30,6 @@ const Genres = () => {
                         image={game.background_image}
                         key={game.id}
                     />
-                    // <Link to={`/detail/${game.id}`} key={game.id}>
-                    //     <div className="genre-box">
-                    //         <div className="img-box">
-                    //             <img src={resize(game.background_image, 1280)} alt={game.name}/>
-                    //         </div>
-                    //         <h3>{game.name}</h3>
-                    //     </div>
-                    // </Link>
                 ))}
             </div>
             }

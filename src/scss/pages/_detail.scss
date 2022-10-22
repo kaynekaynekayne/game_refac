@@ -4,7 +4,7 @@
     width:100%;
     min-height:100vh;
     overflow-x:hidden;    
-    background:rgba(0,0,0,0.7); 
+    background:rgba(0,0,0,0.9); 
     position:fixed;
     top:0;
     left:0;
@@ -13,8 +13,8 @@
 .board{
     width:80%;
     text-align:center;
-    background:white;
-    color:black;
+    // background:white;
+    // color:black;
     font-family: 'Poppins', sans-serif;
     position:absolute;
 
@@ -29,16 +29,38 @@
 
 .main{
     padding:2rem;
-    display:flex;
-    justify-content: space-around;
+    // display:flex;
+    // justify-content: space-around;
+
     h4{
         margin-bottom: 0.5rem;
     }
-    .rating-stars{
-        margin-bottom:1rem;
+
+    .rating{
+        margin:2rem 0;
+    }
+    .stores{
+        cursor:pointer;
+        display:flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+    }
+
+    .stores:hover{
+        color:rgb(206, 8, 8);
     }
 }
 
-// .main>div{
-//     margin-bottom:1.5rem;
+// @media screen and (max-width:768px){
+//     .main{
+//         display:flex;
+//         justify-content: space-around;
+    
+//         .stores{
+//             display:flex;
+//             flex-direction: column;
+//             align-items: center;
+//             margin: 1rem 0;
+//         }
+//     }
 // }

@@ -10,6 +10,7 @@ export const GAME_UP_URL=()=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}$
 
 export const DETAIL_URL=(game_id)=>(`${BASE_URL}games/${game_id}.json?&key=${process.env.REACT_APP_KEY}`);
 export const SCREENSHOT_URL=(game_id)=>(`${BASE_URL}games/${game_id}/screenshots?&key=${process.env.REACT_APP_KEY}`);
+export const STORE_URL=(game_id)=>(`${BASE_URL}games/${game_id}/stores?key=${process.env.REACT_APP_KEY}`)
 
 export const SEARCH_URL=(game_name)=>`${BASE_URL}games?key=${process.env.REACT_APP_KEY}&search=${game_name}&page_size=9`
 
