@@ -38,28 +38,16 @@ const Home = (props) => {
                 <div>
                     <h2>Upcoming releases</h2>
                     <div className="games">
-                        {upComing.map(item=>
+                        {upComing.map(game=>
                             <Game 
-                                name={item.name}
-                                released={item.released}
-                                id={item.id} 
-                                image={item.background_image}
-                                key={item.id}
+                                name={game.name}
+                                released={game.released}
+                                id={game.id} 
+                                image={game.background_image}
+                                key={game.id}
                             />
                         )} 
                     </div>
-                    <h2>Popular</h2>
-                    {/* <div className="games">
-                        {popular.map(item=>
-                            <Game 
-                                name={item.name}
-                                id={item.id} 
-                                image={item.background_image}
-                                key={item.id}
-                                released={item.released && (item.released.split("-"))[0]}
-                            />
-                        )} 
-                    </div> */}
                 </div>
             ))
             }

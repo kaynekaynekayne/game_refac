@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GENRE_URL, GENRE_GAMES_URL } from "../utils/api";
+import { GENRE_URL, GENRE_GAMES_URL } from "../api";
 
 const initialState={
     genreInfo:[],
@@ -15,7 +15,7 @@ export const fetchGenre=createAsyncThunk(
             const genres=await axios.get(GENRE_URL());
             return genres.data.results;
         }catch(err){
-            return err;
+            return err.message;
         }
     }
 );
@@ -24,10 +24,15 @@ export const fetchGamesByGenre=createAsyncThunk(
     "genre/fetchGamesByGenre",
     async(genreName)=>{
         try{
-            const games=await axios.get(GENRE_GAMES_URL(genreName));
+            const games=await axios.get(GENRE_GAMES_URL(genreName),{
+                params:{
+                    ordering:'-rating',
+                    page_size:10
+                }
+            });
             return games.data.results;
         }catch(err){
-            return err;
+            return err.message;
         }
     }
 )

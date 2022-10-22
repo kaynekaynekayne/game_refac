@@ -5,7 +5,20 @@ import Load from '../components/load';
 import { resize } from '../utils/resize';
 import RatingStars from '../components/ratingStars';
 import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
-import {FaPlaystation, FaLinux, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay, FaAndroid} from 'react-icons/fa';
+import {
+    FaPlaystation, 
+    FaLinux, 
+    FaSteam, 
+    FaXbox, 
+    FaApple, 
+    FaGamepad, 
+    FaPlay, 
+    FaAndroid,
+    FaRegGrinStars,
+    FaRegGrinBeam,
+    FaRegMehRollingEyes,
+    FaRegFrown
+} from 'react-icons/fa';
 
 const Detail = () => {
     const {id}=useParams();
@@ -21,6 +34,7 @@ const Detail = () => {
         metacritic, 
         description_raw,
         tags, 
+        ratings_count,
         platforms
     }, screenShots, loading}=data;
 
@@ -38,24 +52,43 @@ const Detail = () => {
         }
     };
 
+    const showRating=(rating)=>{
+        switch(rating){
+            case "exceptional":
+                return "최고예요 "
+                return <FaRegGrinStars size="24" color="FF2424"/>
+            case "recommended":
+                return "추천해요 "
+                return <FaRegGrinBeam size="24"/>
+            case "meh":
+                return "별로예요 "
+                return <FaRegMehRollingEyes size="24"/>
+            case "skip":
+                return "싫어요 "
+                return <FaRegFrown size="24"/>
+            default:
+                return;
+        }
+    };
+
     const showPlatform=(platform)=>{
         switch(platform.split(" ")[0]){
             case "PlayStation":
-                return <FaPlaystation></FaPlaystation>
+                return <FaPlaystation/>
             case "Xbox":
-                return <FaXbox></FaXbox>
+                return <FaXbox/>
             case "Nintendo":
-                return <FaGamepad></FaGamepad>
+                return <FaGamepad/>
             case "PC":
-                return <FaSteam></FaSteam>
+                return <FaSteam/>
             case "iOS":
-                return <FaApple></FaApple>
+                return <FaApple/>
             case "Android":
-                return <FaAndroid></FaAndroid>
+                return <FaAndroid/>
             case "Linux":
-                return <FaLinux></FaLinux>
+                return <FaLinux/>
             default:
-                return <FaPlay></FaPlay>
+                return <FaPlay/>
         }
     };
 
@@ -66,53 +99,41 @@ const Detail = () => {
                     <h1>{name}</h1>
                     <img src={resize(background_image,1280)} alt="image"/>
                     <div className="main">
-                        <div className='rating-stars'>
-                            <RatingStars />
-                            <span>{`(${rating}/${rating_top})`}</span>
-                        </div>
-                        <div className='plot'>
-                            <h4>{description_raw}</h4>
-                        </div>
-                        <div className='info'>     
-                            
- 
-                     
-                            <div style={{ padding:'1rem', display:'flex', justifyContent:'space-between'}}>
-                                <div className='rating' style={{textAlign:'left',}}>
-                                    <p>Ratings</p>
-                                    {ratings && ratings.map(mark=>
-                                        <p key={mark.id}>{`${mark.title} ${mark.percent}% (${mark.count})`}</p>
-                                    )}
-                                    {metacritic &&
-                                        <p>{`Metacritic: ${metacritic}`}</p>
-                                    }
-                                </div>
-                                <div style={{width:'60%'}}>
-                                    <div>
-                                        <p>Genres</p>
-                                        {tags && tags.slice(0,3).map(tag=>
-                                            <span key={tag.id}>#{tag.name} </span>
-                                        )}
+                        <div>
+                            <h3>평가</h3>
+                            <div className='rating-stars'>
+                                <RatingStars />
+                                <h4>{rating_top===0 ? "아직 평점이 없습니다" : `(${rating}/${rating_top}) [${ratings_count}]`}</h4>
+                            </div>
+                            <div className='rating'>
+                                {ratings && ratings.map(mark=>
+                                    <div key={mark.id} >
+                                        <span>{showRating(mark.title)}</span>
+                                        {/* <span>{highPercent(mark.percent)}</span> */}
+                                        <span>{`${mark.percent}%`}</span>
+                                        {console.log(mark)}
                                     </div>
-                                    <p>Platforms</p>
-                                    <div className="platforms" style={{flexWrap:'wrap', display:'flex', justifyContent:'space-between'}}>
-                                        {platforms && platforms.map(item=>(
-                                            <div key={item.platform.id}>
-                                                <span>{showPlatform(item.platform.name)}</span>
-                                                <span>{item.platform.name}</span>
-                                            </div>
-                                        ))}
+                                )}
+                                {metacritic &&
+                                    <strong>{`메타크리틱 - ${metacritic}`}</strong>
+                                }
+                            </div>
+                        </div>
+                        <div className="platforms">
+                            <h3>플랫폼</h3>
+                            <div>
+                                {platforms && platforms.map(item=>(
+                                    <div key={item.platform.id}>
+                                        <span>{showPlatform(item.platform.name)}</span>
+                                        <span>{item.platform.name}</span>
                                     </div>
-                                </div>
-                      
+                                ))}
                             </div>
                         </div>
                     </div>
-      
                     {screenShots.results && screenShots.results.map(shot=>
                         <div className='playshots' key={shot.id}>
                             <img src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
-                            {/* <button>full</button>    */}
                         </div>
                     )}
                 </div>

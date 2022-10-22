@@ -15,6 +15,7 @@ const RatingStars = (props) => {
             starEmptyColor="rgb(230, 229, 227)"
             starSpacing="0.5px"
             name="rating"
+            starDimension="24px"
         />
     )
 };

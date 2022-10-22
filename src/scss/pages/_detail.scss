@@ -29,7 +29,16 @@
 
 .main{
     padding:2rem;
+    display:flex;
+    justify-content: space-around;
     h4{
-        text-align:justify;
+        margin-bottom: 0.5rem;
+    }
+    .rating-stars{
+        margin-bottom:1rem;
     }
 }
+
+// .main>div{
+//     margin-bottom:1.5rem;
+// }
