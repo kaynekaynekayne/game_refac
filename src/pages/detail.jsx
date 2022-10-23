@@ -122,7 +122,7 @@ const Detail = () => {
                             </div>
                             <div className='down-content'>
                                 <h3>구매</h3>
-                                {sellStores.results && sellStores.results.map(item=>(
+                                {sellStores && sellStores.map(item=>(
                                     <div className='stores'
                                         key={item.id} 
                                         onClick={()=>window.open(item.url, '_blank')} 
@@ -135,7 +135,7 @@ const Detail = () => {
                         </div>
                     </div>
                     <div>
-                        {screenShots.results && screenShots.results.map(shot=>
+                        {screenShots && screenShots.map(shot=>
                             <div key={shot.id}>
                                 <img className='playshots' src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
                             </div>
