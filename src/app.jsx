@@ -1,6 +1,5 @@
 import {BrowserRouter as Router} from 'react-router-dom';
 import './scss/main.scss';
-import Home from "./pages/home";
 import Pages from './pages/pages';
 import SearchHeader from "./components/header";
 import Category from "./components/category";

@@ -24,7 +24,7 @@ const Category = () => {
                             <h3>{genre.name}</h3>
                             <div className="category-box">
                                 <div className="img-box">   
-                                    <img src={resize(genre.image_background, 1280)} />
+                                    <img src={resize(genre.image_background, 1280)} alt="game-genre"/>
                                 </div>
                             </div>
                         </Link>
