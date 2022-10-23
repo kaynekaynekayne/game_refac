@@ -134,11 +134,13 @@ const Detail = () => {
                             </div>
                         </div>
                     </div>
-                    {screenShots.results && screenShots.results.map(shot=>
-                        <div className='playshots' key={shot.id}>
-                            <img src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
-                        </div>
-                    )}
+                    <div>
+                        {screenShots.results && screenShots.results.map(shot=>
+                            <div key={shot.id}>
+                                <img className='playshots' src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
         </div>

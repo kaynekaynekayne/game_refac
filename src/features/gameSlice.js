@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GAME_UP_URL, SEARCH_URL } from "../api";
+import { GAME_UP_URL, GAME_POP_URL, SEARCH_URL } from "../api";
 
 const initialState={
     popular:[],
@@ -20,16 +20,16 @@ export const fetchGames=createAsyncThunk(
                     page_size:10
                 }
             });
-            // const popGames=await axios.get(GAME_POP_URL(), {
-            //     params:{
-            //         ordering:'-rating',
-            //         page_size:10
-            //     }
-            // });
+            const popGames=await axios.get(GAME_POP_URL(), {
+                params:{
+                    ordering:'-rating',
+                    page_size:10
+                }
+            });
             
             return {
                 upComing:upGames.data.results,
-                // popular:popGames.data.results,
+                popular:popGames.data.results,
             };
 
         }catch(err){

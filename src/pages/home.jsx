@@ -7,7 +7,7 @@ import Load from "../components/load";
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {upComing, searching}=useSelector(state=>state.games);
+    const {popular, upComing, searching}=useSelector(state=>state.games);
 
     useEffect(()=>{
         dispatch(fetchGames());
@@ -32,11 +32,10 @@ const Home = (props) => {
                 </div>
             :
             (Object.keys(upComing).length===0 
-            // && Object.keys(popular).length===0 
-            //위 코드 살려야 함 삭제하면 안됨
+            && Object.keys(popular).length===0 
             ? <Load /> : (
                 <div>
-                    <h2>Upcoming releases</h2>
+                    <h2>곧 출시되는 게임</h2>
                     <div className="games">
                         {upComing.map(game=>
                             <Game 
@@ -47,6 +46,18 @@ const Home = (props) => {
                                 key={game.id}
                             />
                         )} 
+                    </div>
+                    <h2>인기 게임</h2>
+                    <div className="games">
+                        {popular.map(game=>
+                            <Game 
+                                name={game.name}
+                                released={game.released}
+                                id={game.id} 
+                                image={game.background_image}
+                                key={game.id}
+                            />    
+                        )}
                     </div>
                 </div>
             ))
