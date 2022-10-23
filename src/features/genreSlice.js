@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { GENRE_URL, GENRE_GAMES_URL } from "../api";
+import instance from "../apis";
+import {fromLastYear} from '../utils/date';
 
 const initialState={
     genreInfo:[],
@@ -12,8 +12,13 @@ export const fetchGenre=createAsyncThunk(
     "genre/fetchGenre",
     async()=>{
         try{
-            const genres=await axios.get(GENRE_URL());
+            const genres=await instance.get(`genres?key=${process.env.REACT_APP_KEY}`,{
+                params:{
+                    page_size:10,
+                }
+            });
             return genres.data.results;
+
         }catch(err){
             return err.message;
         }
@@ -24,19 +29,21 @@ export const fetchGamesByGenre=createAsyncThunk(
     "genre/fetchGamesByGenre",
     async(genreName)=>{
         try{
-            const games=await axios.get(GENRE_GAMES_URL(genreName),{
+            const games=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
                 params:{
                     ordering:'-rating',
-                    page_size:10
+                    page_size:10,
+                    dates:fromLastYear,
+                    genres:genreName,
                 }
             });
             return games.data.results;
+            
         }catch(err){
             return err.message;
         }
     }
 )
-
 
 const genreSlice=createSlice({
     name:"genre",
@@ -46,7 +53,6 @@ const genreSlice=createSlice({
         builder
         .addCase(fetchGenre.fulfilled, (state,action)=>{
             state.genreInfo=action.payload;
-
         })
         .addCase(fetchGamesByGenre.pending, (state,action)=>{
             state.loading=true;

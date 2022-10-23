@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import { DETAIL_URL, SCREENSHOT_URL, STORE_URL} from "../api";
+import instance from "../apis";
 
 const initialState={
     detailInfo:[],
@@ -13,13 +14,14 @@ export const fetchDetail=createAsyncThunk(
     "detail/fetchDetail",
     async (id)=>{
         try{
-            const detail=await axios.get(DETAIL_URL(id))
-            const screenShot=await axios.get(SCREENSHOT_URL(id))
-            const store=await axios.get(STORE_URL(id));
+            const detail=await instance.get(`games/${id}.json?key=${process.env.REACT_APP_KEY}`);
+            const screenShot=await instance.get(`games/${id}/screenshots?key=${process.env.REACT_APP_KEY}`);
+            const store=await instance.get(`games/${id}/stores?key=${process.env.REACT_APP_KEY}`);
+            
             return {
                 details:detail.data,
-                screens:screenShot.data,
-                stores:store.data,
+                screens:screenShot.data.results,
+                stores:store.data.results,
             }
         }catch(err){
             return err.message;

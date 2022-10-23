@@ -1,35 +1,38 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { GAME_UP_URL, GAME_POP_URL, SEARCH_URL } from "../api";
+import instance from "../apis";
+import {fromLastYear, fromThisYear} from '../utils/date';
 
 const initialState={
     popular:[],
     upComing:[],
     searching:[],
     error:"",
+    loading:null, //원래 null 없었음 여차하면 다 뺄거임 (+home화면에 전달된 loading도)
 };
-
 
 export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
         try{
-            const upGames=await axios.get(GAME_UP_URL(),{
+            const upGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
                 params:{
+                    dates:fromThisYear,
+                    page_size:10,
                     ordering:'-added',
-                    page_size:10
-                }
-            });
-            const popGames=await axios.get(GAME_POP_URL(), {
-                params:{
-                    ordering:'-rating',
-                    page_size:10
                 }
             });
             
+            const popGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
+                params:{
+                    dates:fromLastYear,
+                    page_size:10,
+                    ordering:'-rated'
+                }
+            })
+
             return {
-                upComing:upGames.data.results,
-                popular:popGames.data.results,
+                up:upGames.data.results,
+                pop:popGames.data.results,
             };
 
         }catch(err){
@@ -42,11 +45,12 @@ export const fetchSearch=createAsyncThunk(
     'games/fetchSearch',
     async(gameName)=>{
         try{
-            const searchGames=await axios.get(SEARCH_URL(gameName),{
+            const searchGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
                 params:{
-                    page_size:9
+                    search:gameName,
+                    page_size:9,
                 }
-            });
+            })
             return searchGames.data.results;
 
         }catch(err){
@@ -65,10 +69,14 @@ const gameSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder
+        .addCase(fetchGames.pending, (state,action)=>{
+            state.loading=true;
+        })
         .addCase(fetchGames.fulfilled, (state,action)=>{
-            const {popular, upComing}=action.payload;
-            state.popular=popular;
-            state.upComing=upComing;
+            const {up, pop}=action.payload;
+            state.upComing=up;
+            state.popular=pop;
+            state.loading=false;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.error=action.error.message
