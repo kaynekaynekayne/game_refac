@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames, clearSearching  } from '../features/gameSlice';
+import { fetchGames } from '../features/gameSlice';
 import Game from '../components/game';
 import Load from "../components/load";
 
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, searching}=useSelector(state=>state.games);
+    const {upComing, searching}=useSelector(state=>state.games);
 
     useEffect(()=>{
         dispatch(fetchGames());

@@ -35,7 +35,6 @@ const Detail = () => {
     sellStores,
     loading}=data;
 
-    console.log(sellStores.results);
     useEffect(()=>{
         dispatch(fetchDetail(id));
         return ()=>{
@@ -54,16 +53,12 @@ const Detail = () => {
         switch(rating){
             case "exceptional":
                 return <FaRegGrinStars size="24"/>
-                return "최고예요 "
             case "recommended":
                 return <FaRegGrinBeam size="24"/>
-                return "추천해요 "
             case "meh":
                 return <FaRegMehRollingEyes size="24"/>
-                return "별로예요 "
             case "skip":
                 return <FaRegFrown size="24"/>
-                return "싫어요 "
             default:
                 return;
         }
@@ -103,7 +98,7 @@ const Detail = () => {
                     <h1>{name}</h1>
                     <div className="container">
                         <div className="left-section">
-                            <img src={resize(background_image,1280)} alt="image"/>
+                            <img src={resize(background_image,1280)} alt="game-poster"/>
                         </div>
                         <div className="right-section">
                             <div className='up-content'>

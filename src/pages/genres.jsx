@@ -1,10 +1,9 @@
 import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Game from '../components/game';
 import Load from '../components/load';
 import { fetchGamesByGenre} from '../features/genreSlice';
-import { resize } from '../utils/resize';
 
 const Genres = () => {
 
