@@ -116,9 +116,8 @@ const Detail = () => {
                                 <div className='rating'>
                                     {ratings && ratings.map(mark=>
                                         <div key={mark.id}>
-                                            <span>{showRating(mark.title)}</span>
-                                            {/* <span>{`${mark.percent}%`}</span> */}
-                                            <progress id="progress" value={mark.percent} min="0" max="100"></progress>
+                                            <span title={mark.title}>{showRating(mark.title)}</span>
+                                            <progress title={mark.percent} id="progress" value={mark.percent} min="0" max="100"></progress>
                                         </div>
                                     )}
                                     {metacritic &&
