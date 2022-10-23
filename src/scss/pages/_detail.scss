@@ -13,11 +13,8 @@
 .board{
     width:80%;
     text-align:center;
-    // background:white;
-    // color:black;
-    font-family: 'Poppins', sans-serif;
+    font-family:'Poppins', sans-serif;
     position:absolute;
-
     h1{
         margin:1rem;
     }
@@ -27,40 +24,52 @@
     }
 }
 
-.main{
-    padding:2rem;
-    // display:flex;
-    // justify-content: space-around;
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    height:100%;
+    padding:1rem 1.5rem;
+}
 
-    h4{
-        margin-bottom: 0.5rem;
-    }
-
-    .rating{
-        margin:2rem 0;
-    }
-    .stores{
-        cursor:pointer;
-        display:flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-    }
-
-    .stores:hover{
-        color:rgb(206, 8, 8);
+.left-section{
+    flex-basis: 75%;
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
     }
 }
 
-// @media screen and (max-width:768px){
-//     .main{
-//         display:flex;
-//         justify-content: space-around;
-    
-//         .stores{
-//             display:flex;
-//             flex-direction: column;
-//             align-items: center;
-//             margin: 1rem 0;
-//         }
-//     }
-// }
+.right-section{
+    flex-basis:25%;
+    padding:2rem;
+}
+
+.up-content{
+    h4{
+        margin-top:0.5rem;
+    }
+}
+.down-content{
+    margin-top:1.5rem;
+}
+
+.rating{
+    margin-top:2rem;
+    div{
+        display:flex;
+        justify-content: space-between;
+    }
+}
+
+.stores{
+    cursor:pointer;
+    display:flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+.stores:hover{
+    color:rgb(235, 42, 42);
+}

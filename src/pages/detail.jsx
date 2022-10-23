@@ -101,23 +101,24 @@ const Detail = () => {
             {loading ? <Load /> : (
                 <div className='board'>
                     <h1>{name}</h1>
-                    <div style={{display:'flex',flexWrap:'wrap', width:'100%', padding:'1.5rem'}}>
-                        <div style={{flexBasis:'80%'}}>
+                    <div className="container">
+                        <div className="left-section">
                             <img src={resize(background_image,1280)} alt="image"/>
                         </div>
-                        <div className="main"  style={{flexBasis:'20%'}}>
-                            <div>
+                        <div className="right-section">
+                            <div className='up-content'>
                                 <h3>평가</h3>
                                 <div className='rating-stars'>
                                     <RatingStars />
                                     <h4>{rating_top===0 ? "아직 평점이 없습니다" : `(${rating}/${rating_top}) [${ratings_count}]`}</h4>
-                                    {metacritic && metacritic>=90 && <h4>다수의 유저들이 이 게임을 높게 평가합니다!</h4>}
+                                    {metacritic && metacritic>=90 && <h4>다수의 유저들이 이 게임을 매우 높게 평가합니다!</h4>}
                                 </div>
                                 <div className='rating'>
                                     {ratings && ratings.map(mark=>
-                                        <div key={mark.id} style={{display:'flex',justifyContent:'space-between'}}>
+                                        <div key={mark.id}>
                                             <span>{showRating(mark.title)}</span>
-                                            <span>{`${mark.percent}%`}</span>
+                                            {/* <span>{`${mark.percent}%`}</span> */}
+                                            <progress id="progress" value={mark.percent} min="0" max="100"></progress>
                                         </div>
                                     )}
                                     {metacritic &&
@@ -125,19 +126,17 @@ const Detail = () => {
                                     }
                                 </div>
                             </div>
-                            <div className="platforms">
+                            <div className='down-content'>
                                 <h3>구매</h3>
-                                <div>
-                                    {sellStores.results && sellStores.results.map(item=>(
-                                        <div className='stores'
-                                            key={item.id} 
-                                            onClick={()=>window.open(item.url, '_blank')} 
-                                        > 
-                                            {showPlatform(item.store_id)}
-                                            <h5>{(item.url).split(".")[1]}</h5>
-                                        </div>
-                                    ))}
-                                </div>
+                                {sellStores.results && sellStores.results.map(item=>(
+                                    <div className='stores'
+                                        key={item.id} 
+                                        onClick={()=>window.open(item.url, '_blank')} 
+                                    > 
+                                        {showPlatform(item.store_id)}
+                                        <h5>{(item.url).split(".")[1]}</h5>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>
