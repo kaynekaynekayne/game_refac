@@ -7,7 +7,7 @@ import Load from "../components/load";
 const Home = (props) => {
 
     const dispatch=useDispatch();
-    const {popular, upComing, searching, loading}=useSelector(state=>state.games);
+    const {popular, searching, loading}=useSelector(state=>state.games);
     
     useEffect(()=>{
         dispatch(fetchGames());
