@@ -1,6 +1,9 @@
 .home{
     overflow-x:hidden;
     padding:0.8rem 2rem;
+    h2{
+        font-family:'Poppins', sans-serif;
+    }
 }
 
 .games{
@@ -9,3 +12,4 @@
     grid-column-gap:1.3rem;
     grid-row-gap:4rem;
 }
+
