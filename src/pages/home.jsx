@@ -33,7 +33,7 @@ const Home = (props) => {
                 </div>
             :
                 <div>
-                    <h2>곧 출시되는 게임</h2>
+                    {/* <h2>곧 출시되는 게임</h2>
                     <div className="games">
                         {upComing.map(game=>
                             <Game 
@@ -44,7 +44,7 @@ const Home = (props) => {
                                 key={game.id}
                             />
                         )} 
-                    </div>
+                    </div> */}
                     <h2>인기 게임</h2>
                     <div className="games">
                         {popular.map(game=>

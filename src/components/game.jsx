@@ -8,7 +8,7 @@ const Game = ({name, released, id, image, rating, ratingTop}) => {
     return(
         <div className="game-card">
             <Link to={`/detail/${id}`}>
-                <img src={resize(image, 1280)} alt={name}/>
+                <img src={resize(image, 600)} alt={name}/>
                 <div>
                     <h3>{name}</h3>
                     {released && 

@@ -14,7 +14,7 @@ export const fetchGenre=createAsyncThunk(
         try{
             const genres=await instance.get(`genres?key=${process.env.REACT_APP_KEY}`,{
                 params:{
-                    page_size:10,
+                    page_size:8,
                 }
             });
             return genres.data.results;
@@ -32,7 +32,7 @@ export const fetchGamesByGenre=createAsyncThunk(
             const games=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
                 params:{
                     ordering:'-rating',
-                    page_size:10,
+                    page_size:8,
                     dates:fromLastYear,
                     genres:genreName,
                 }

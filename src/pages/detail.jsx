@@ -89,7 +89,7 @@ const Detail = () => {
                     <h1>{name}</h1>
                     <div className="container">
                         <div className="left-section">
-                            <img src={resize(background_image,1280)} alt="game-poster"/>
+                            <img src={resize(background_image,600)} alt="game-poster"/>
                         </div>
                         <div className="right-section">
                             <div className='up-content'>
@@ -128,7 +128,7 @@ const Detail = () => {
                     <div>
                         {screenShots && screenShots.map(shot=>
                             <div key={shot.id}>
-                                <img className='playshots' src={resize(shot.image,1280)} key={shot.id} alt="game"/> 
+                                <img className='playshots' src={resize(shot.image,600)} key={shot.id} alt="game"/> 
                             </div>
                         )}
                     </div>
