@@ -7,7 +7,7 @@ const initialState={
     upComing:[],
     searching:[],
     error:"",
-    loading:null, //원래 null 없었음 여차하면 다 뺄거임 (+home화면에 전달된 loading도)
+    loading:null,
 };
 
 export const fetchGames=createAsyncThunk(
@@ -69,20 +69,20 @@ const gameSlice=createSlice({
     },
     extraReducers:(builder)=>{
         builder
-        .addCase(fetchGames.pending, (state,action)=>{
-            state.loading=true;
-        })
         .addCase(fetchGames.fulfilled, (state,action)=>{
             const {up, pop}=action.payload;
             state.upComing=up;
             state.popular=pop;
-            state.loading=false;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.error=action.error.message
         })
+        .addCase(fetchSearch.pending, (state,action)=>{
+            state.loading=true;
+        })
         .addCase(fetchSearch.fulfilled, (state,action)=>{
             state.searching=action.payload;
+            state.loading=false;
         })
     }
 })

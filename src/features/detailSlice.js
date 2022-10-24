@@ -1,10 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
-import { DETAIL_URL, SCREENSHOT_URL, STORE_URL} from "../api";
 import instance from "../apis";
 
 const initialState={
-    detailInfo:[],
+    detailInfo:{},
     screenShots:[],
     sellStores:[],
     loading:null,
@@ -31,13 +29,6 @@ export const fetchDetail=createAsyncThunk(
 const detailSlice=createSlice({
     name:"detail",
     initialState,
-    reducers:{
-        removeGamesDetail:(state)=>{
-            state.detailInfo=[];
-            state.screenShots=[];
-            state.sellStores=[];
-        }
-    },
     extraReducers:(builder)=>{
         builder
         .addCase(fetchDetail.pending, (state,action)=>{
@@ -53,5 +44,4 @@ const detailSlice=createSlice({
     }
 })
 
-export const {removeGamesDetail}=detailSlice.actions;
 export default detailSlice;
