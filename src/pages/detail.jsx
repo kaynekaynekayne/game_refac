@@ -4,16 +4,10 @@ import {useParams} from 'react-router-dom';
 import Load from '../components/load';
 import RatingStars from '../components/ratingStars';
 import { resize } from '../utils/resize';
-import { fetchDetail, removeGamesDetail } from '../features/detailSlice';
+import { fetchDetail } from '../features/detailSlice';
 import {
-    FaPlaystation, 
-    FaSteam, 
-    FaXbox, 
-    FaApple, 
-    FaGamepad, 
-    FaPlay,
-    FaGooglePlay,
-    FaItchIo,FaRegGrinStars,FaRegGrinBeam,FaRegMehRollingEyes,FaRegFrown
+    FaPlaystation, FaSteam, FaXbox, FaApple, FaGamepad, FaPlay,FaGooglePlay,FaItchIo,
+    FaRegGrinStars, FaRegGrinBeam, FaRegMehRollingEyes, FaRegFrown
 } from 'react-icons/fa';
 import {SiEpicgames, SiNintendo3Ds} from 'react-icons/si'
 
@@ -27,7 +21,7 @@ const Detail = () => {
         name, 
         rating, 
         rating_top,
-        ratings, 
+        ratings,
         metacritic, 
         ratings_count,
     }, 
@@ -37,9 +31,6 @@ const Detail = () => {
 
     useEffect(()=>{
         dispatch(fetchDetail(id));
-        return ()=>{
-            dispatch(removeGamesDetail());
-        }
     },[dispatch, id]);
 
     const goBackHandler=(event)=>{
@@ -104,7 +95,7 @@ const Detail = () => {
                             <div className='up-content'>
                                 <h3>평가</h3>
                                 <div className='rating-stars'>
-                                    <RatingStars />
+                                    <RatingStars rating={rating} ratingTop={rating_top}/>
                                     <h4>{rating_top===0 ? "아직 평점이 없습니다" : `(${rating}/${rating_top}) [${ratings_count}]`}</h4>
                                     {metacritic && metacritic>=90 && <h4>다수의 유저들이 이 게임을 매우 높게 평가합니다!</h4>}
                                 </div>
