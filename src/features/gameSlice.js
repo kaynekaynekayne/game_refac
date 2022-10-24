@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import instance from "../apis";
-import {fromLastYear, fromThisYear} from '../utils/date';
+import {fromLastYear} from '../utils/date';
 
 const initialState={
     popular:[],
-    upComing:[],
     searching:[],
     error:"",
     loading:null,
@@ -13,49 +12,28 @@ const initialState={
 export const fetchGames=createAsyncThunk(
     'games/fetchGames',
     async()=>{
-        try{
-            const upGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
-                params:{
-                    dates:fromThisYear,
-                    page_size:10,
-                    ordering:'-added',
-                }
-            });
-            
-            const popGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
-                params:{
-                    dates:fromLastYear,
-                    page_size:10,
-                    ordering:'-rated'
-                }
-            })
+        const popGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
+            params:{
+                dates:fromLastYear,
+                page_size:10,
+                ordering:'-rated'
+            }
+        })
 
-            return {
-                up:upGames.data.results,
-                pop:popGames.data.results,
-            };
-
-        }catch(err){
-            return err.message;
-        }
+        return popGames.data.results;
     }
 )
 
 export const fetchSearch=createAsyncThunk(
     'games/fetchSearch',
     async(gameName)=>{
-        try{
-            const searchGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
-                params:{
-                    search:gameName,
-                    page_size:12,
-                }
-            })
-            return searchGames.data.results;
-
-        }catch(err){
-            return err.message;
-        }
+        const searchGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
+            params:{
+                search:gameName,
+                page_size:12,
+            }
+        })
+        return searchGames.data.results;
     }
 );
 
@@ -70,9 +48,7 @@ const gameSlice=createSlice({
     extraReducers:(builder)=>{
         builder
         .addCase(fetchGames.fulfilled, (state,action)=>{
-            const {up, pop}=action.payload;
-            state.upComing=up;
-            state.popular=pop;
+            state.popular=action.payload;
         })
         .addCase(fetchGames.rejected, (state,action)=>{
             state.error=action.error.message

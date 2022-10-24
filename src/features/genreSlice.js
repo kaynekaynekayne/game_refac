@@ -11,37 +11,27 @@ const initialState={
 export const fetchGenre=createAsyncThunk(
     "genre/fetchGenre",
     async()=>{
-        try{
-            const genres=await instance.get(`genres?key=${process.env.REACT_APP_KEY}`,{
-                params:{
-                    page_size:8,
-                }
-            });
-            return genres.data.results;
-
-        }catch(err){
-            return err.message;
-        }
+        const genres=await instance.get(`genres?key=${process.env.REACT_APP_KEY}`,{
+            params:{
+                page_size:8,
+            }
+        });
+        return genres.data.results;
     }
 );
 
 export const fetchGamesByGenre=createAsyncThunk(
     "genre/fetchGamesByGenre",
     async(genreName)=>{
-        try{
-            const games=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
-                params:{
-                    ordering:'-rating',
-                    page_size:8,
-                    dates:fromLastYear,
-                    genres:genreName,
-                }
-            });
-            return games.data.results;
-            
-        }catch(err){
-            return err.message;
-        }
+        const games=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
+            params:{
+                ordering:'-rating',
+                page_size:8,
+                dates:fromLastYear,
+                genres:genreName,
+            }
+        });
+        return games.data.results;
     }
 )
 
