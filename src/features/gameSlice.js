@@ -48,7 +48,7 @@ export const fetchSearch=createAsyncThunk(
             const searchGames=await instance.get(`games?key=${process.env.REACT_APP_KEY}`,{
                 params:{
                     search:gameName,
-                    page_size:9,
+                    page_size:12,
                 }
             })
             return searchGames.data.results;
