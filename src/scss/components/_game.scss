@@ -23,11 +23,11 @@
     .star-ratings{
         padding:0;
     }
+    &:hover{
+        transform: scale(1.08);
+    }
 }
 
-.game-card:hover{
-    transform: scale(1.08);
-}
 
 @media screen and (max-width:767px){
     .game-card{

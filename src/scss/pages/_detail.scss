@@ -85,10 +85,9 @@
     display:flex;
     justify-content: space-between;
     margin: 0.5rem 0;
-}
-
-.stores:hover{
-    color:rgb(235, 42, 42);
+    &:hover{
+        color:rgb(235, 42, 42);
+    }
 }
 
 .playshots{
