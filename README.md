@@ -1,4 +1,4 @@
-## Game Rating Club
+# Game Rating Club
 
 ### 목적
 게임에 대한 전반적인 평가들을 제공하고 게임 유통 플랫폼으로 바로 이동할 수 있는 웹사이트 구현
