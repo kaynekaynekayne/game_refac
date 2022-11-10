@@ -1,1 +1,1 @@
-##Game Rating Club
+## Game Rating Club
