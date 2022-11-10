@@ -8,9 +8,9 @@
 
 ### 기술
 #### 프론트엔드
--React
--SCSS
--Redux-toolkit
+-React  
+-SCSS  
+-Redux-toolkit  
 
 ### 소요기간
 1~2주
