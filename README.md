@@ -31,6 +31,7 @@
 ![search](https://user-images.githubusercontent.com/96046698/201478826-e6a72c71-2535-4447-8335-82306ec233c0.gif)  
 
 ### 상세 페이지  
+![detail](https://user-images.githubusercontent.com/96046698/201478951-580d31bd-310a-402d-adb7-d90710e4fd9d.png)  
 
 ### 반응형  
 
