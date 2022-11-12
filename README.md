@@ -23,3 +23,13 @@
 ### 홈 화면  
 ![home](https://user-images.githubusercontent.com/96046698/201477721-25cdae88-e0d7-4ce8-af36-777ea36a9661.png)  
   
+### 장르별 목록  
+ 
+### 검색  
+
+### 상세 페이지  
+
+### 반응형  
+
+
+
