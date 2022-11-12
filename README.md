@@ -20,3 +20,6 @@
 
 
 ## 미리보기
+### 홈 화면  
+![home](https://user-images.githubusercontent.com/96046698/201477721-25cdae88-e0d7-4ce8-af36-777ea36a9661.png)  
+  
