@@ -21,7 +21,7 @@ const Home = (props) => {
                     <h2>검색 결과</h2>
                     <div className="games">
                         {typeof(searching)==="string" ? 
-                            <span>{searching}</span>
+                            <h4>{searching}</h4>
                         :
                         searching.map(game=>(
                             <Game 
