@@ -32,7 +32,7 @@
 ### 상세 페이지  
 ![detail](https://user-images.githubusercontent.com/96046698/201479013-8aa0c940-490c-4949-8bfc-cfe499a3a9f4.png)  
 
-### 반응형  
+
 
 
 
