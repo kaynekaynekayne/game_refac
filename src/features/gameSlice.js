@@ -33,6 +33,7 @@ export const fetchSearch=createAsyncThunk(
                 page_size:12,
             }
         })
+        if(searchGames.data.results.length===0) return `"${gameName}"에 대한 검색 결과가 없습니다`
         return searchGames.data.results;
     }
 );

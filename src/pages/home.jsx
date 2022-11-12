@@ -8,7 +8,7 @@ const Home = (props) => {
 
     const dispatch=useDispatch();
     const {popular, searching, loading}=useSelector(state=>state.games);
-    
+
     useEffect(()=>{
         dispatch(fetchGames());
     },[dispatch]);
@@ -20,7 +20,10 @@ const Home = (props) => {
                 <div>
                     <h2>검색 결과</h2>
                     <div className="games">
-                        {searching.map(game=>(
+                        {typeof(searching)==="string" ? 
+                            <span>{searching}</span>
+                        :
+                        searching.map(game=>(
                             <Game 
                                 name={game.name} 
                                 released={game.released && (game.released.split("-"))[0]} 
