@@ -30,7 +30,7 @@
 ![search](https://user-images.githubusercontent.com/96046698/201510053-ce8f6c4d-b87a-4642-9bb5-d3fede712fff.gif)  
 
 ### 상세 페이지  
-![detail2](https://user-images.githubusercontent.com/96046698/201510557-84e6dca1-816a-4149-8130-299b6e3218c8.png)  
+![detail](https://user-images.githubusercontent.com/96046698/201511138-c8cb1a9f-7aef-40f4-856a-99db947209ac.gif)  
 
 
 
