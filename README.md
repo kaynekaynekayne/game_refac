@@ -27,7 +27,7 @@
 ![genre2](https://user-images.githubusercontent.com/96046698/201486379-639b29b5-a181-401d-853a-6e8b9ba9f0e2.gif)  
 
 ### 검색  
-![search](https://user-images.githubusercontent.com/96046698/201478826-e6a72c71-2535-4447-8335-82306ec233c0.gif)  
+![search](https://user-images.githubusercontent.com/96046698/201510053-ce8f6c4d-b87a-4642-9bb5-d3fede712fff.gif)  
 
 ### 상세 페이지  
 ![detail](https://user-images.githubusercontent.com/96046698/201479013-8aa0c940-490c-4949-8bfc-cfe499a3a9f4.png)  
