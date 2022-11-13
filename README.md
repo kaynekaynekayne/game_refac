@@ -24,7 +24,7 @@
 ![home](https://user-images.githubusercontent.com/96046698/201477721-25cdae88-e0d7-4ce8-af36-777ea36a9661.png)  
   
 ### 장르별 목록  
-![genre2](https://user-images.githubusercontent.com/96046698/201486379-639b29b5-a181-401d-853a-6e8b9ba9f0e2.gif)  
+![genre](https://user-images.githubusercontent.com/96046698/201510225-4938bd80-dd74-4fff-b7fe-ad56d47624aa.gif)  
 
 ### 검색  
 ![search](https://user-images.githubusercontent.com/96046698/201510053-ce8f6c4d-b87a-4642-9bb5-d3fede712fff.gif)  
