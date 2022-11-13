@@ -21,8 +21,8 @@
 
 ## 미리보기
 ### 홈 화면  
-![home2](https://user-images.githubusercontent.com/96046698/201510412-06084cbb-19e2-47bb-92f8-f9040b292f1a.png)  
-  
+![home3](https://user-images.githubusercontent.com/96046698/201510967-b31a0d35-d874-45e8-8595-75756c6e0e74.gif)  
+
 ### 장르별 목록  
 ![genre2](https://user-images.githubusercontent.com/96046698/201510332-99acf9f5-fa3f-422b-a315-f8c867c7b201.gif)  
 
@@ -30,8 +30,7 @@
 ![search](https://user-images.githubusercontent.com/96046698/201510053-ce8f6c4d-b87a-4642-9bb5-d3fede712fff.gif)  
 
 ### 상세 페이지  
-![detail](https://user-images.githubusercontent.com/96046698/201479013-8aa0c940-490c-4949-8bfc-cfe499a3a9f4.png)  
-
+![detail2](https://user-images.githubusercontent.com/96046698/201510557-84e6dca1-816a-4149-8130-299b6e3218c8.png)  
 
 
 
