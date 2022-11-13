@@ -14,10 +14,7 @@
 - Redux-toolkit  
 
 #### 배포
-- netlify
-
-## 개요
-
+- netlify  
 
 ## 미리보기
 ### 홈 화면  
