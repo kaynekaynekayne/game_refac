@@ -4,7 +4,7 @@
     width:100%;
     min-height:100vh;
     overflow-x:hidden;    
-    background-color:rgba(28, 28, 28, 0.9); 
+    background-color:$blur-black; 
     position:fixed;
     top:0;
     left:0;
@@ -12,7 +12,7 @@
 
 .board{
     width:80%;
-    background-color:rgba(0,0,0,0.8); 
+    background-color:$dark-black; 
     text-align:center;
     font-family:'Poppins', sans-serif;
     position:absolute;
@@ -68,16 +68,16 @@
 }
 
 #progress::-webkit-progress-bar {
-    background:#f0f0f0;
+    background:$common-white;
     border-radius:10px;
     height:0.5rem;
 }
 
 #progress::-webkit-progress-value {
     border-radius:10px;
-    background: #1D976C;
-    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
-    background: linear-gradient(to right, #93F9B9, #1D976C);
+    background: $dark-mint;
+    background: -webkit-linear-gradient(to right, $light-mint, $dark-mint);
+    background: linear-gradient(to right, $light-mint, $dark-mint);
 }
 
 .stores{
@@ -86,7 +86,7 @@
     justify-content: space-between;
     margin: 0.5rem 0;
     &:hover{
-        color:rgb(235, 42, 42);
+        color:$red;
     }
 }
 

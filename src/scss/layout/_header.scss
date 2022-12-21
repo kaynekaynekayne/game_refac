@@ -6,12 +6,12 @@ header{
     padding:2rem;
 
     h1{
-        color:rgb(106, 237, 196);
+        color:$bright-mint;
         cursor:pointer;
     }
 
     input{
-        color:black;
+        color:$common-black;
         padding:1.2rem 1rem;
         border-radius:0.5rem;
         outline:0;

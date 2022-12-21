@@ -1,7 +1,7 @@
 .loading-section{
     width:100%;
     height:100vh;
-    background: rgb(27, 27, 27);
+    background: $common-black;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -10,7 +10,7 @@
         width:3rem;
         height:3rem;
         border-radius:50%;
-        border:0.4rem solid rgb(50, 185, 135);
+        border:0.4rem solid $mid-mint;
         border-top:0.4rem solid whitesmoke;
         animation:spin 0.5s linear infinite;
     }
